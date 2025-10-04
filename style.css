@@ -66,3 +66,29 @@ body {
     max-width: 1000px;
     line-height: 1.2;
 }
+
+/* ---------------------------------- */
+/* 5. Boton */
+/* ---------------------------------- */
+.contenedor-boton-calcular {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+}
+#boton-calcular {
+    padding: 12px 32px;
+    font-size: 1.2em;
+    background-color: #1570ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: background 0.2s;
+}
+#boton-calcular:hover {
+    background-color: #1050bb;
+}
