@@ -57,7 +57,7 @@ body {
     margin-bottom: 20px;
     max-width: 800px;
     /* Nuevo: menos espacio arriba, más arriba el título */
-    margin-top: 0;
+    margin-top: 50;
 }
 
 .subtitulo {
@@ -92,3 +92,4 @@ body {
 #boton-calcular:hover {
     background-color: #1050bb;
 }
+
