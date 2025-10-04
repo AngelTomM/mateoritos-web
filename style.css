@@ -128,7 +128,8 @@ a {
 
 .marco-principal .explora-como-peque {
   position: absolute;
-  top: 150px;
+  /* moved down so it sits above the button */
+  top: 660px;
   left: calc(50% - 380px);
   width: 760px;
   font-family: "Bai Jamjuree", Helvetica;

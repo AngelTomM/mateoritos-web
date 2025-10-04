@@ -84,7 +84,11 @@ function draw() {
   let y = r * systemScaleFactor * sin(theta);
   let xi = x;
   let yi = y * cos(radians(i));
-  fill(255, 0, 0);
+  // change color based on selected slide (if available)
+  let slide = (window && window.currentSlide) ? window.currentSlide : 1;
+  if (slide === 1) fill(255, 0, 0);
+  else if (slide === 2) fill(0, 255, 0);
+  else fill(0, 200, 255);
   noStroke();
   ellipse(xi, yi, 10, 10);
 
@@ -113,5 +117,14 @@ function draw() {
     textSize(22);
     text("¡PELIGRO! MOID menor que la distancia Tierra-Luna", width / 2, 70);
   }
+  pop();
+
+  // show current slide label in the corner of the canvas area
+  push();
+  resetMatrix();
+  fill(255);
+  textSize(16);
+  textAlign(LEFT);
+  text(`Slide: ${slide}`, 10, height - 10);
   pop();
 }
