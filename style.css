@@ -15,119 +15,69 @@ button:focus-visible {
   outline: -webkit-focus-ring-color auto 5px !important;
 }
 a {
-  text-decoration: none;
+  text-decoration: none;
 }
-
-.marco-principal {
+.ventana {
   background-color: #0b3d91;
   overflow: hidden;
-  width: 1440px;
+  width: 100%;
   min-width: 1440px;
-  min-height: 1080px;
-  height: 1080px;
+  min-height: 1024px;
   position: relative;
 }
 
-.marco-principal .chatgpt-image-oct {
+.ventana .chatgpt-image-oct {
   position: absolute;
   top: 0;
   left: 0;
   width: 1440px;
-  height: 1080px;
-  aspect-ratio: 1.333;
+  height: 1024px;
+  aspect-ratio: 1.5;
   object-fit: cover;
 }
 
-.marco-principal .button {
-  all: unset;
-  box-sizing: border-box;
+.ventana .rectangle {
   position: absolute;
-  top: 950px;
-  left: 424px;
-  width: 592px;
-  height: 110px;
+  top: 253px;
+  left: -41px;
+  width: 1481px;
+  height: 5px;
   background-color: #fc3d21;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 20;
-}
-.marco-principal .button:hover {
-  background-color: #d12e18;
 }
 
-.marco-principal .explora-como-peque {
-  position: absolute;
-  top: 700px;
-  left: calc(50.00% - 761px);
-  width: 1521px;
-  font-family: "Bai Jamjuree-Bold", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 40px;
-  text-align: center;
-  letter-spacing: 0;
-.marco-principal .SIMULACION-DE {
+.ventana .SIMULACION-DE {
   position: absolute;
   top: 61px;
-  left: 0;
-  width: 100%;
+  left: calc(50.00% - 667px);
+  width: 1330px;
   font-family: "Bai Jamjuree-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
   font-size: 61px;
   letter-spacing: 0;
   line-height: normal;
-  text-align: center;
-}
-.marco-principal .explora-como-peque {
-  position: absolute;
-  top: 61px;
-  left: 0;
-  width: 100%;
-  font-family: "Bai Jamjuree-Bold", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 61px;
-  letter-spacing: 0;
-  line-height: normal;
-  text-align: center;
-}
-  box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-.marco-principal .button:hover {
-  background-color: #d12e18;
 }
 
-.marco-principal .visualizar-simulaci {
-  font-family: "Arsenal SC-Bold", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 45px;
-  text-align: center;
-  letter-spacing: 0;
-  line-height: 20px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.ventana .div {
+  position: absolute;
+  top: 332px;
+  left: 48px;
+  width: 510px;
+  height: 623px;
+  background-color: #0b3d91;
+  border-radius: 40px;
+  border: 5px solid;
+  border-color: #fc3d21;
 }
 
-.marco-principal .span {
+.ventana .rectangle-2 {
   position: absolute;
-  height: 100%;
-  top: 0;
-  right: 1px;
-  width: 48px;
-  background-color: #fc3d21;
+  top: 337px;
+  left: 595px;
+  width: 788px;
+  height: 613px;
+  background-color: #0b3d91;
+  border-radius: 40px;
+  border: 5px solid;
+  border-color: #fc3d21;
 }

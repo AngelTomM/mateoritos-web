@@ -6,13 +6,36 @@ let moonScaleFactor = 10000;  // escala especial para la Luna
 let systemScaleFactor;
 let moidThreshold = 0.002569; // umbral de peligro en UA
 
+let canvasDivId = 'simulacion-container';
+
 function setup() {
-  // Detectar en qué página estamos y elegir el contenedor correcto
-  let containerId = document.getElementById('simulacion-solo-container') ? 'simulacion-solo-container' : 'simulacion-container';
-  let canvas = createCanvas(900, 900);
-  canvas.parent(containerId);
+  // Try to find the container inserted in simulacion.html; fall back to existing id for other pages
+  if (!document.getElementById(canvasDivId)) {
+    canvasDivId = document.getElementById('simulacion-solo-container') ? 'simulacion-solo-container' : canvasDivId;
+  }
+
+  // create a temporary canvas; we'll resize and reparent it once we have the container size
+  let c = createCanvas(100, 100);
+  c.parent(canvasDivId);
   angleMode(RADIANS);
+  fitCanvasToContainer();
   systemScaleFactor = 350 / (a * (1 + e)); // escala para que todo entre en el canvas
+
+  // handle window resizes so the canvas keeps fitting the right card
+  window.addEventListener('resize', () => {
+    fitCanvasToContainer();
+  });
+}
+
+function fitCanvasToContainer() {
+  const container = document.getElementById(canvasDivId);
+  if (!container) return;
+  // compute inner size (subtract borders) using getBoundingClientRect
+  const rect = container.getBoundingClientRect();
+  // Use integer sizes for canvas
+  const w = Math.max(100, Math.floor(rect.width));
+  const h = Math.max(100, Math.floor(rect.height));
+  resizeCanvas(w, h);
 }
 
 function draw() {
@@ -78,6 +101,7 @@ function draw() {
   }
 
   // Mostrar alerta si MOID < moidThreshold
+  push();
   resetMatrix();
   fill(255);
   textAlign(CENTER);
@@ -89,4 +113,5 @@ function draw() {
     textSize(22);
     text("¡PELIGRO! MOID menor que la distancia Tierra-Luna", width / 2, 70);
   }
+  pop();
 }
