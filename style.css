@@ -1,0 +1,27 @@
+/*
+ * Ubicación: css/style.css
+ * Aplicando estilos del lienzo principal de Figma
+*/
+
+/* (Opcional pero recomendado: un reseteo básico) */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor-principal {
+    /* Valores copiados directamente del panel CSS del plugin: */
+    width: 1440px;
+    height: 1024px;
+    background-color: #0b3d91;
+    
+    /* * Nota: Estos valores de ancho/alto fijo (1440px, 1024px) 
+     * no son ideales para dispositivos móviles. 
+     * Más adelante, te convendrá cambiar 'px' a 'vw'/'vh' o usar porcentajes.
+    */
+}
+
+/* * A medida que inspecciones más elementos (como botones o secciones), 
+ * irás agregando sus estilos aquí con nuevas clases.
+*/
