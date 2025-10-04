@@ -20,7 +20,7 @@ a {
 .marco-principal {
   background-color: #0b3d91;
   overflow: hidden;
-  width: 100%;
+  width: 1440px;
   min-width: 1440px;
   min-height: 1024px;
   position: relative;
@@ -40,7 +40,7 @@ a {
   position: absolute;
   top: 253px;
   left: -41px;
-  width: 1481px;
+  width: 1440px;
   height: 5px;
   background-color: #fc3d21;
 }
