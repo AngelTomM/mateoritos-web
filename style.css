@@ -83,20 +83,32 @@ a {
   font-size: 40px;
   text-align: center;
   letter-spacing: 0;
+.marco-principal .SIMULACION-DE {
+  position: absolute;
+  top: 61px;
+  left: 0;
+  width: 100%;
+  font-family: "Bai Jamjuree-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 61px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
+}
+.marco-principal .explora-como-peque {
+  position: absolute;
+  top: 700px;
+  left: 0;
+  width: 100%;
+  font-family: "Bai Jamjuree-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0;
   line-height: normal;
 }
-
-.marco-principal .button {
-  all: unset;
-  box-sizing: border-box;
-  position: absolute;
-  top: 950px;
-  left: 424px;
-  width: 592px;
-  height: 110px;
-  background-color: #fc3d21;
-  border-radius: 25px;
-  overflow: hidden;
   box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
   cursor: pointer;
   display: flex;

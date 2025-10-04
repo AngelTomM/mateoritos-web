@@ -18,17 +18,9 @@
       <div id="simulacion-container">
         <!-- El canvas de p5.js aparecerá aquí -->
       </div>
-      <button class="button" id="ver-simulacion" onclick="scrollToSimulacion()">
+      <button class="button" id="ver-simulacion" onclick="window.location.href='simulacion.html'">
         <span class="visualizar-simulaci">VISUALIZAR SIMULACIÓN</span>
       </button>
-      <script>
-        function scrollToSimulacion() {
-          const el = document.getElementById('simulacion-container');
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }
-      </script>
       <script src="p5.js"></script>
       <script src="p5.sound.min.js"></script>
       <script src="sketch.js"></script>

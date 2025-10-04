@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=900, initial-scale=1" />
+    <title>Simulación - Solo Animación</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #0b3d91;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #simulacion-solo-container {
+        width: 900px;
+        height: 900px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #0b3d91;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="simulacion-solo-container"></div>
+    <script src="p5.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script>
+      // Sobrescribir setup para usar el nuevo contenedor
+      window.setup = function() {
+        let canvas = createCanvas(900, 900);
+        canvas.parent('simulacion-solo-container');
+        angleMode(RADIANS);
+        systemScaleFactor = 350 / (a * (1 + e));
+      }
+    </script>
+    <script src="sketch.js"></script>
+  </body>
+</html>
