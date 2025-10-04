@@ -174,3 +174,17 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+/* Slide panel button styles (inside the right card) */
+#slides-panel .slide-btn {
+  background: rgba(252,61,33,0.95);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 8px;
+  cursor: pointer;
+  font-weight: 700;
+}
+#slides-panel .slide-btn:hover {
+  transform: translateY(-2px);
+}
