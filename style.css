@@ -11,34 +11,30 @@ body {
 /* 2. Estilos del Contenedor Principal (Reemplazo de w-[1440px] h-[1024px] bg-[#0b3d91]) */
 /* ---------------------------------- */
 .contenedor-principal {
-    /* Usamos el ancho y alto que especificaste */
     width: 1440px; 
     height: 1024px;
-    background-color: #0b3d91; /* El color de fondo azul oscuro */
-    
-    /* Configuración para que el contenido se apile verticalmente y se centre */
+    background-color: #0b3d91;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centra el contenido horizontalmente */
-    justify-content: center; /* Centra el contenido verticalmente */
-    
-    position: relative; /* Necesario para posicionar la imagen */
-    padding: 20px; /* Un poco de espacio interno */
-    box-sizing: border-box; /* Asegura que el padding no cambie el ancho/alto total */
+    /* Quitar el centrado vertical: */
+    /* justify-content: center; */
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* ---------------------------------- */
 /* 3. Estilos de la Imagen (Reemplazo de w-[1536px] h-[1024px] object-cover) */
 /* ---------------------------------- */
 .imagen-fondo {
-    /* Aquí debes poner la ruta correcta de tu imagen. Si la imagen no está en la misma carpeta que el CSS, ajusta la ruta */
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%; /* Opcional: ajusta al 100% del contenedor */
+    width: 100%;
     height: 100%; 
-    object-fit: cover; /* Simula 'object-cover' para asegurar que la imagen cubra el área */
-    z-index: 1; /* Coloca la imagen debajo de los textos */
+    object-fit: cover;
+    z-index: 1;
 }
 
 /* ---------------------------------- */
@@ -49,22 +45,24 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: white; /* Color de texto blanco */
-    z-index: 2; /* Coloca el texto encima de la imagen */
+    color: white;
+    z-index: 2;
+    /* Nuevo: separa el contenido de la parte superior */
+    margin-top: 80px; /* Ajusta este valor según lo arriba que quieras el título */
 }
 
 .titulo {
-    /* font-normal text-[60px] text-center text-white */
     font-size: 60px;
     font-weight: normal;
-    margin-bottom: 20px; /* Espacio debajo del título */
-    max-width: 800px; /* Limita un poco el ancho del texto */
+    margin-bottom: 20px;
+    max-width: 800px;
+    /* Nuevo: menos espacio arriba, más arriba el título */
+    margin-top: 0;
 }
 
 .subtitulo {
-    /* font-normal text-[40px] text-center text-white */
     font-size: 40px;
     font-weight: normal;
-    max-width: 1000px; /* Limita un poco el ancho del texto */
-    line-height: 1.2; /* Separación entre líneas */
+    max-width: 1000px;
+    line-height: 1.2;
 }
