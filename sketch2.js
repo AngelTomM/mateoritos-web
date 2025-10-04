@@ -71,6 +71,23 @@ function setup() {
     resizeCanvas(w, h);
   });
   try { resizeObserver.observe(simContainer); } catch (e) { /* ignore if not supported */ }
+
+  // Apply initial presets based on window.currentSlide if present
+  if (typeof window !== 'undefined') {
+    // ensure there's a default
+    if (typeof window.currentSlide === 'undefined') window.currentSlide = 1;
+    applySlidePreset(window.currentSlide);
+
+    // listen for future changes (some pages update window.currentSlide manually)
+    // Use a simple polling fallback if no event is emitted
+    let lastSlide = window.currentSlide;
+    setInterval(() => {
+      if (window.currentSlide !== lastSlide) {
+        lastSlide = window.currentSlide;
+        applySlidePreset(lastSlide);
+      }
+    }, 200);
+  }
 }
 
 function draw() {
@@ -168,4 +185,23 @@ function draw() {
   sphere(6);
   pop();
 }
+
+// Preset mapping for slides — adjust these values to taste
+function applySlidePreset(slideNumber) {
+  if (!aSlider || !eSlider || !iSlider) return;
+  const presets = {
+    1: { a: 0.002, e: 0.1, i: 2.0 },
+    2: { a: 0.0015, e: 0.5, i: 10.0 },
+    3: { a: 0.005, e: 0.85, i: 20.0 }
+  };
+
+  const p = presets[slideNumber] || presets[1];
+  // set values smoothly by directly setting slider value
+  aSlider.value(p.a);
+  eSlider.value(p.e);
+  iSlider.value(p.i);
+}
+
+// expose for manual use
+window.applySlidePreset = applySlidePreset;
 
