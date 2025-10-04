@@ -1,122 +1,70 @@
-/* * UBICACIÓN: css/style.css 
- * CSS generado por Penpot, optimizado para legibilidad.
-*/
-
-/* ---------------------------------------------------- */
-/* 1. Fuentes (Copiado directamente de Penpot)           */
-/* ---------------------------------------------------- */
-@font-face {
-    font-family: 'sourcesanspro';
-    font-style: normal;
-    font-weight: 400;
-    font-display: block;
-    /* La fuente se carga desde el CDN de Penpot */
-    src: url(https://design.penpot.app/fonts/sourcesanspro-regular.woff) format('woff');
-}
-
-/* ---------------------------------------------------- */
-/* 2. Estilos Base (Copiado directamente de Penpot)      */
-/* ---------------------------------------------------- */
-html, body {
-    margin: 0;
-    min-height: 100%;
-    min-width: 100%;
-    padding: 0;
-    /* >>> CAMBIO 1: Aplicamos el fondo azul al body para que siempre se vea */
-    background: #0b3d91; 
-}
-
+/* ---------------------------------- */
+/* 1. Estilos Base y Reseteo */
+/* ---------------------------------- */
 body {
-    /* Estas propiedades aseguran que el body ocupe toda la pantalla */
+    margin: 0; /* Elimina el margen por defecto del navegador */
+    padding: 0;
+    font-family: Arial, sans-serif; /* Fuente por defecto */
+}
+
+/* ---------------------------------- */
+/* 2. Estilos del Contenedor Principal (Reemplazo de w-[1440px] h-[1024px] bg-[#0b3d91]) */
+/* ---------------------------------- */
+.contenedor-principal {
+    /* Usamos el ancho y alto que especificaste */
+    width: 1440px; 
+    height: 1024px;
+    background-color: #0b3d91; /* El color de fondo azul oscuro */
+    
+    /* Configuración para que el contenido se apile verticalmente y se centre */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    
+    position: relative; /* Necesario para posicionar la imagen */
+    padding: 20px; /* Un poco de espacio interno */
+    box-sizing: border-box; /* Asegura que el padding no cambie el ancho/alto total */
+}
+
+/* ---------------------------------- */
+/* 3. Estilos de la Imagen (Reemplazo de w-[1536px] h-[1024px] object-cover) */
+/* ---------------------------------- */
+.imagen-fondo {
+    /* Aquí debes poner la ruta correcta de tu imagen. Si la imagen no está en la misma carpeta que el CSS, ajusta la ruta */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Opcional: ajusta al 100% del contenedor */
+    height: 100%; 
+    object-fit: cover; /* Simula 'object-cover' para asegurar que la imagen cubra el área */
+    z-index: 1; /* Coloca la imagen debajo de los textos */
+}
+
+/* ---------------------------------- */
+/* 4. Estilos del Contenido de Texto */
+/* ---------------------------------- */
+.contenido-texto {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    min-height: 100vh;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: 'sourcesanspro', sans-serif; /* Usamos la fuente definida */
-}
-
-/* ---------------------------------------------------- */
-/* 3. Contenedor Principal (Pantalla Azul)              */
-/* ---------------------------------------------------- */
-.pantalla-p-e764ff64529f {
-    /* Estilos base del Artboard de Penpot */
-    position: relative; /* CRUCIAL: Necesario para que los títulos absolutos se posicionen dentro de él */
-    /* >>> CAMBIO 2: Eliminamos el ancho y alto fijo del diseño */
-    width: 100%; /* Ocupa todo el ancho disponible */
-    min-height: 1024px; /* Aseguramos una altura mínima */
-    
-    /* ELIMINAMOS background: #0b3d91; porque ahora está en el body */
-    border-radius: 0;
-    overflow: hidden;
-    z-index: 0;
-}
-
-/* ---------------------------------------------------- */
-/* 4. Título Principal (Simulación de Trayectorias...)  */
-/* ---------------------------------------------------- */
-
-.simulacin-e76c619ac6ae {
-    /* Posicionamiento y dimensiones del contenedor (extraído de Penpot) */
-    position: absolute;
-    left: 50%; /* CENTRADO HORIZONTAL */
-    transform: translateX(-50%); /* Ajuste para centrar */
-    top: 94px;
-    width: 100%; /* Hacemos que ocupe todo el ancho para centrar mejor el texto */
-    max-width: 1440px;
-    height: 193px;
-    /* Centramos el texto dentro del contenedor usando flexbox */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Aplicamos estilos de texto al <h1> que pusimos en el HTML */
-.simulacin-e76c619ac6ae h1 {
-    /* Estilos consolidados de las clases Penpot (.root-0-paragraph-set-0-paragraph-0-text-0) */
-    color: rgba(255, 255, 255, 1);
     text-align: center;
-    font-size: 72px; /* Título muy grande */
-    line-height: 1.2;
-    margin: 0;
-    padding: 0 100px; /* Añadimos padding para que no toque los bordes laterales del contenedor */
-    /* Otras propiedades de Penpot que podemos simplificar: */
-    text-transform: none;
-    font-weight: 400;
+    color: white; /* Color de texto blanco */
+    z-index: 2; /* Coloca el texto encima de la imagen */
 }
 
-/* ---------------------------------------------------- */
-/* 5. Subtítulo (Explora como pequeñas variaciones...)  */
-/* ---------------------------------------------------- */
-.explora-co-e7662a028813 {
-    /* Posicionamiento y dimensiones del contenedor (extraído de Penpot) */
-    position: absolute;
-    left: 50%; /* CENTRADO HORIZONTAL */
-    transform: translateX(-50%); /* Ajuste para centrar */
-    top: 805px; /* Cerca del final de la pantalla */
-    width: 100%; /* Hacemos que ocupe todo el ancho para centrar mejor el texto */
-    max-width: 1440px;
-    height: 193px;
-    /* Centramos el texto dentro del contenedor usando flexbox */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.titulo {
+    /* font-normal text-[60px] text-center text-white */
+    font-size: 60px;
+    font-weight: normal;
+    margin-bottom: 20px; /* Espacio debajo del título */
+    max-width: 800px; /* Limita un poco el ancho del texto */
 }
 
-/* Aplicamos estilos de texto al <p> que pusimos en el HTML */
-.explora-co-e7662a028813 p {
-    /* Estilos consolidados de las clases Penpot (.root-0-paragraph-set-0-paragraph-0-text-0) */
-    color: rgba(255, 255, 255, 1);
-    text-align: center;
-    font-size: 48px; /* Texto grande */
-    line-height: 1.2;
-    margin: 0;
-    padding: 0 100px;
-    /* Otras propiedades de Penpot que podemos simplificar: */
-    text-transform: none;
-    font-weight: 400;
+.subtitulo {
+    /* font-normal text-[40px] text-center text-white */
+    font-size: 40px;
+    font-weight: normal;
+    max-width: 1000px; /* Limita un poco el ancho del texto */
+    line-height: 1.2; /* Separación entre líneas */
 }
