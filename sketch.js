@@ -7,8 +7,10 @@ let systemScaleFactor;
 let moidThreshold = 0.002569; // umbral de peligro en UA
 
 function setup() {
+  // Detectar en qué página estamos y elegir el contenedor correcto
+  let containerId = document.getElementById('simulacion-solo-container') ? 'simulacion-solo-container' : 'simulacion-container';
   let canvas = createCanvas(900, 900);
-  canvas.parent('simulacion-container');
+  canvas.parent(containerId);
   angleMode(RADIANS);
   systemScaleFactor = 350 / (a * (1 + e)); // escala para que todo entre en el canvas
 }
