@@ -7,7 +7,8 @@ let systemScaleFactor;
 let moidThreshold = 0.002569; // umbral de peligro en UA
 
 function setup() {
-  createCanvas(800, 800);
+  let canvas = createCanvas(800, 800);
+  canvas.parent('simulacion-container');
   angleMode(RADIANS);
   systemScaleFactor = 300 / (a * (1 + e)); // escala para que todo entre en el canvas
 }
