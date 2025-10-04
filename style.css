@@ -1,16 +1,4 @@
-.marco-principal #simulacion-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  width: 900px;
-  height: 900px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-}
+
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 * {
   -webkit-font-smoothing: antialiased;
@@ -50,26 +38,27 @@ a {
   object-fit: cover;
 }
 
-.marco-principal .rectangle {
+.marco-principal .button {
+  all: unset;
+  box-sizing: border-box;
   position: absolute;
-  top: 253px;
-  left: 0;
-  width: 1440px;
-  height: 5px;
+  top: 950px;
+  left: 424px;
+  width: 592px;
+  height: 110px;
   background-color: #fc3d21;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 20;
 }
-
-.marco-principal .SIMULACION-DE {
-  position: absolute;
-  top: 61px;
-  left: calc(50.00% - 667px);
-  width: 1330px;
-  font-family: "Bai Jamjuree-Bold", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 61px;
-  letter-spacing: 0;
-  line-height: normal;
+.marco-principal .button:hover {
+  background-color: #d12e18;
 }
 
 .marco-principal .explora-como-peque {
