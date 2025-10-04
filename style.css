@@ -22,6 +22,8 @@ html, body {
     min-height: 100%;
     min-width: 100%;
     padding: 0;
+    /* >>> CAMBIO 1: Aplicamos el fondo azul al body para que siempre se vea */
+    background: #0b3d91; 
 }
 
 body {
@@ -44,9 +46,11 @@ body {
 .pantalla-p-e764ff64529f {
     /* Estilos base del Artboard de Penpot */
     position: relative; /* CRUCIAL: Necesario para que los títulos absolutos se posicionen dentro de él */
-    width: 1440px; /* Ancho fijo del diseño original */
-    height: 1024px; /* Alto fijo del diseño original */
-    background: #0b3d91; /* Color azul oscuro */
+    /* >>> CAMBIO 2: Eliminamos el ancho y alto fijo del diseño */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    min-height: 1024px; /* Aseguramos una altura mínima */
+    
+    /* ELIMINAMOS background: #0b3d91; porque ahora está en el body */
     border-radius: 0;
     overflow: hidden;
     z-index: 0;
@@ -59,9 +63,11 @@ body {
 .simulacin-e76c619ac6ae {
     /* Posicionamiento y dimensiones del contenedor (extraído de Penpot) */
     position: absolute;
-    left: -179px; /* Posicionamiento absoluto, puede ser problemático */
+    left: 50%; /* CENTRADO HORIZONTAL */
+    transform: translateX(-50%); /* Ajuste para centrar */
     top: 94px;
-    width: 1794px;
+    width: 100%; /* Hacemos que ocupe todo el ancho para centrar mejor el texto */
+    max-width: 1440px;
     height: 193px;
     /* Centramos el texto dentro del contenedor usando flexbox */
     display: flex;
@@ -89,9 +95,11 @@ body {
 .explora-co-e7662a028813 {
     /* Posicionamiento y dimensiones del contenedor (extraído de Penpot) */
     position: absolute;
-    left: -152px;
+    left: 50%; /* CENTRADO HORIZONTAL */
+    transform: translateX(-50%); /* Ajuste para centrar */
     top: 805px; /* Cerca del final de la pantalla */
-    width: 1794px;
+    width: 100%; /* Hacemos que ocupe todo el ancho para centrar mejor el texto */
+    max-width: 1440px;
     height: 193px;
     /* Centramos el texto dentro del contenedor usando flexbox */
     display: flex;
