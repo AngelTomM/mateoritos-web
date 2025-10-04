@@ -1,119 +1,114 @@
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #0b3d91;
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
 }
 
-.figma-main-container {
-    width: 1440px;
-    height: 1024px;
-    background: #0b3d91;
-    position: relative;
-    overflow: hidden;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.marco-principal {
+  background-color: #0b3d91;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1440px;
+  min-height: 1024px;
+  position: relative;
 }
 
-.figma-bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1536px;
-    height: 1024px;
-    object-fit: cover;
-    z-index: 1;
-    pointer-events: none;
+.marco-principal .chatgpt-image-oct {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 1024px;
+  aspect-ratio: 1.5;
+  object-fit: cover;
 }
 
-.figma-titulo-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-    z-index: 2;
-    position: relative;
+.marco-principal .rectangle {
+  position: absolute;
+  top: 253px;
+  left: -41px;
+  width: 1481px;
+  height: 5px;
+  background-color: #fc3d21;
 }
 
-.figma-titulo {
-    font-size: 61px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 0;
-    text-align: center;
-    line-height: 1.1;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    z-index: 2;
+.marco-principal .SIMULACION-DE {
+  position: absolute;
+  top: 61px;
+  left: calc(50.00% - 667px);
+  width: 1330px;
+  font-family: "Bai Jamjuree-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 61px;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
-.figma-barra-roja {
-    width: 1481px;
-    height: 5px;
-    background: #fc3d21;
-    position: relative;
-    margin: 32px auto 0 auto;
-    z-index: 2;
+.marco-principal .explora-como-peque {
+  position: absolute;
+  top: 700px;
+  left: calc(50.00% - 761px);
+  width: 1521px;
+  font-family: "Bai Jamjuree-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 40px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
-.figma-bottom-area {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    bottom: 40px;
-    z-index: 3;
+.marco-principal .button {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  top: 858px;
+  left: 424px;
+  width: 592px;
+  height: 110px;
+  background-color: #fc3d21;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
 }
 
-.figma-subtitulo {
-    font-size: 40px;
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: 40px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    z-index: 3;
+.marco-principal .visualizar-simulaci {
+  position: absolute;
+  top: calc(50.00% - 39px);
+  left: calc(50.00% - 348px);
+  width: 696px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Arsenal SC-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 45px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
 }
 
-.figma-boton-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: static;
-    z-index: 3;
+.marco-principal .span {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 1px;
+  width: 48px;
+  background-color: #fc3d21;
 }
-
-.figma-boton {
-    width: 592px;
-    height: 110px;
-    background: #fc3d21;
-    border: none;
-    border-radius: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
-    transition: background 0.2s;
-    position: relative;
-}
-.figma-boton:hover {
-    background: #d12e18;
-}
-.figma-boton-texto {
-    font-size: 45px;
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
-    line-height: 20px;
-    width: 100%;
-}
-
