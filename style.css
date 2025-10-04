@@ -1,27 +1,70 @@
-/*
- * Ubicación: css/style.css
- * Aplicando estilos del lienzo principal de Figma
-*/
-
-/* (Opcional pero recomendado: un reseteo básico) */
-* {
-    box-sizing: border-box;
-    margin: 0;
+/* ---------------------------------- */
+/* 1. Estilos Base y Reseteo */
+/* ---------------------------------- */
+body {
+    margin: 0; /* Elimina el margen por defecto del navegador */
     padding: 0;
+    font-family: Arial, sans-serif; /* Fuente por defecto */
 }
 
+/* ---------------------------------- */
+/* 2. Estilos del Contenedor Principal (Reemplazo de w-[1440px] h-[1024px] bg-[#0b3d91]) */
+/* ---------------------------------- */
 .contenedor-principal {
-    /* Valores copiados directamente del panel CSS del plugin: */
-    width: 1440px;
+    /* Usamos el ancho y alto que especificaste */
+    width: 1440px; 
     height: 1024px;
-    background-color: #0b3d91;
+    background-color: #0b3d91; /* El color de fondo azul oscuro */
     
-    /* * Nota: Estos valores de ancho/alto fijo (1440px, 1024px) 
-     * no son ideales para dispositivos móviles. 
-     * Más adelante, te convendrá cambiar 'px' a 'vw'/'vh' o usar porcentajes.
-    */
+    /* Configuración para que el contenido se apile verticalmente y se centre */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    justify-content: center; /* Centra el contenido verticalmente */
+    
+    position: relative; /* Necesario para posicionar la imagen */
+    padding: 20px; /* Un poco de espacio interno */
+    box-sizing: border-box; /* Asegura que el padding no cambie el ancho/alto total */
 }
 
-/* * A medida que inspecciones más elementos (como botones o secciones), 
- * irás agregando sus estilos aquí con nuevas clases.
-*/
+/* ---------------------------------- */
+/* 3. Estilos de la Imagen (Reemplazo de w-[1536px] h-[1024px] object-cover) */
+/* ---------------------------------- */
+.imagen-fondo {
+    /* Aquí debes poner la ruta correcta de tu imagen. Si la imagen no está en la misma carpeta que el CSS, ajusta la ruta */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Opcional: ajusta al 100% del contenedor */
+    height: 100%; 
+    object-fit: cover; /* Simula 'object-cover' para asegurar que la imagen cubra el área */
+    z-index: 1; /* Coloca la imagen debajo de los textos */
+}
+
+/* ---------------------------------- */
+/* 4. Estilos del Contenido de Texto */
+/* ---------------------------------- */
+.contenido-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: white; /* Color de texto blanco */
+    z-index: 2; /* Coloca el texto encima de la imagen */
+}
+
+.titulo {
+    /* font-normal text-[60px] text-center text-white */
+    font-size: 60px;
+    font-weight: normal;
+    margin-bottom: 20px; /* Espacio debajo del título */
+    max-width: 800px; /* Limita un poco el ancho del texto */
+}
+
+.subtitulo {
+    /* font-normal text-[40px] text-center text-white */
+    font-size: 40px;
+    font-weight: normal;
+    max-width: 1000px; /* Limita un poco el ancho del texto */
+    line-height: 1.2; /* Separación entre líneas */
+}
