@@ -1,96 +1,109 @@
-/* ---------------------------------- */
-/* 1. Estilos Base y Reseteo */
-/* ---------------------------------- */
+
 body {
-    margin: 0; /* Elimina el margen por defecto del navegador */
+    margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif; /* Fuente por defecto */
+    font-family: Arial, sans-serif;
+    background: #0b3d91;
 }
 
-/* ---------------------------------- */
-/* 2. Estilos del Contenedor Principal (Reemplazo de w-[1440px] h-[1024px] bg-[#0b3d91]) */
-/* ---------------------------------- */
-.contenedor-principal {
-    width: 1440px; 
+.figma-main-container {
+    width: 1440px;
     height: 1024px;
-    background-color: #0b3d91;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido horizontalmente */
-    /* Quitar el centrado vertical: */
-    /* justify-content: center; */
+    background: #0b3d91;
     position: relative;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-/* ---------------------------------- */
-/* 3. Estilos de la Imagen (Reemplazo de w-[1536px] h-[1024px] object-cover) */
-/* ---------------------------------- */
-.imagen-fondo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    object-fit: cover;
-    z-index: 1;
-}
-
-/* ---------------------------------- */
-/* 4. Estilos del Contenido de Texto */
-/* ---------------------------------- */
-.contenido-texto {
+    overflow: hidden;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    color: white;
+    justify-content: flex-start;
+}
+
+.figma-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1536px;
+    height: 1024px;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.figma-barra-roja {
+    width: 1481px;
+    height: 5px;
+    background: #fc3d21;
+    position: relative;
+    margin-top: 40px;
     z-index: 2;
-    /* Nuevo: separa el contenido de la parte superior */
-    margin-top: 80px; /* Ajusta este valor según lo arriba que quieras el título */
 }
 
-.titulo {
-    font-size: 60px;
-    font-weight: normal;
-    margin-bottom: 20px;
-    max-width: 800px;
-    /* Nuevo: menos espacio arriba, más arriba el título */
-    margin-top: 50;
+.figma-titulos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    z-index: 2;
+    position: relative;
 }
 
-.subtitulo {
+.figma-titulo {
+    font-size: 61px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.figma-subtitulo {
     font-size: 40px;
-    font-weight: normal;
-    max-width: 1000px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
     line-height: 1.2;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.10);
 }
 
-/* ---------------------------------- */
-/* 5. Boton */
-/* ---------------------------------- */
-.contenedor-boton-calcular {
+.figma-boton-container {
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: absolute;
-    bottom: 40px;
+    bottom: 60px;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 }
-#boton-calcular {
-    padding: 12px 32px;
-    font-size: 1.2em;
-    background-color: #1570ff;
-    color: #fff;
+
+.figma-boton {
+    width: 592px;
+    height: 110px;
+    background: #fc3d21;
     border: none;
-    border-radius: 8px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
     transition: background 0.2s;
+    position: relative;
 }
-#boton-calcular:hover {
-    background-color: #1050bb;
+.figma-boton:hover {
+    background: #d12e18;
+}
+.figma-boton-texto {
+    font-size: 45px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-decoration: underline;
+    line-height: 20px;
+    width: 100%;
 }
 
