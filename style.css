@@ -4,8 +4,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 800px;
-  height: 800px;
+  width: 900px;
+  height: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,8 @@ a {
   overflow: hidden;
   width: 1440px;
   min-width: 1440px;
-  min-height: 1024px;
+  min-height: 1080px;
+  height: 1080px;
   position: relative;
 }
 
@@ -44,15 +45,15 @@ a {
   top: 0;
   left: 0;
   width: 1440px;
-  height: 1024px;
-  aspect-ratio: 1.5;
+  height: 1080px;
+  aspect-ratio: 1.333;
   object-fit: cover;
 }
 
 .marco-principal .rectangle {
   position: absolute;
   top: 253px;
-  left: -41px;
+  left: 0;
   width: 1440px;
   height: 5px;
   background-color: #fc3d21;
@@ -89,7 +90,7 @@ a {
   all: unset;
   box-sizing: border-box;
   position: absolute;
-  top: 858px;
+  top: 950px;
   left: 424px;
   width: 592px;
   height: 110px;
@@ -97,17 +98,17 @@ a {
   border-radius: 25px;
   overflow: hidden;
   box-shadow: 0px 2px 4px -1px #0000000f, 0px 4px 6px -1px #0000001a;
-}
-
-.marco-principal .visualizar-simulaci {
-  position: absolute;
-  top: calc(50.00% - 39px);
-  left: calc(50.00% - 348px);
-  width: 696px;
-  height: 78px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.2s;
+}
+.marco-principal .button:hover {
+  background-color: #d12e18;
+}
+
+.marco-principal .visualizar-simulaci {
   font-family: "Arsenal SC-Bold", Helvetica;
   font-weight: 700;
   color: #ffffff;
@@ -115,6 +116,10 @@ a {
   text-align: center;
   letter-spacing: 0;
   line-height: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .marco-principal .span {
