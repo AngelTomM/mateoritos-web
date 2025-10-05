@@ -62,8 +62,33 @@
           malena: '../IMG.Malena.png'
         };
 
+        // tokens provided by user — use for robust matching (normalized, diacritics-insensitive)
+        const surnameTokens = {
+          mica: ['Micaela','Franco'],
+          simon: ['Avila','Boeri','Simón'],
+          malena: ['Daniele','Malena'],
+          ignacio: ['Andrade','Ignacio','Martin'],
+          joaquin: ['Favier','Zakowicz','Joaquin'],
+          tomas: ['Centeno','Martin','Angel','Tomas']
+        };
+
+        const normalize = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+        const used = new Array(members.length).fill(false);
+
         idOrder.forEach((id, idx) => {
-          const fullName = members[idx] || document.getElementById('name-' + id).textContent;
+          // try to find a matching member by tokens
+          let foundIdx = -1;
+          for(let i=0;i<members.length;i++){
+            if(used[i]) continue;
+            const norm = normalize(members[i]);
+            if(surnameTokens[id].some(tok => norm.includes(normalize(tok)))) { foundIdx = i; break; }
+          }
+          // fallback to position-based if not found
+          if(foundIdx === -1) foundIdx = idx < members.length ? idx : members.findIndex((m, i) => !used[i]);
+          if(foundIdx === -1) foundIdx = 0;
+          used[foundIdx] = true;
+
+          const fullName = members[foundIdx] || document.getElementById('name-' + id).textContent;
           const nameEl = document.getElementById('name-' + id);
           if(nameEl) nameEl.textContent = fullName;
           const ell = document.querySelector('.ellipse.' + id);
