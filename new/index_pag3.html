@@ -46,10 +46,10 @@
       // populate texts from i18n (lightweight: replace headings and names)
       function updatePage3Texts() {
         const t = i18n.t;
-        document.getElementById('page-title').textContent = t('page3.title') || 'Sobre Nosotros';
-        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateorito';
-        document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description') || '';
-        document.getElementById('footer-text').textContent = t('page3.footer') || 'NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA';
+    document.getElementById('page-title').innerText = t('page3.title') || 'Sobre Nosotros';
+    document.getElementById('team-name').innerText = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateorito';
+    document.getElementById('team-desc').innerText = t('page3.team_description') || t('page3.description') || '';
+    document.getElementById('footer-text').innerText = t('page3.footer') || 'NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA';
 
         const members = t('page3.members') || [];
         // mapping by visual id order used in style_3.css
