@@ -32,11 +32,16 @@
   "danger": "⚠️ DANGER! asteroid threat ⚠️"
   ,
   "page3": {
-    "title": "ABOUT US",
-    "team_name": "Meteoritos Team",
+  "title": "ABOUT US",
+  "team_name": "Meteoritos Team",
     "team_description": "A team made up of Mechatronic Engineering students from the National University of San Luis participating in the NASA Space Apps Challenge.",
     "members": [
-      "Centeno Angel Tomás","Fránco Micaela","Ávila Boeri Simón","Favier Zakowicz Joaquín","Daniele Malena","Andrade Ignacio Martin"
+      "Franco Micaela",
+      "Avila Boeri Simón",
+      "Daniele Malena",
+      "Andrade Ignacio Martin",
+      "Favier Zakowicz Joaquín",
+      "Centeno Angel Tomás"
     ],
     "footer": "NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA"
   }

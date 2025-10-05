@@ -32,11 +32,16 @@
   "danger": "⚠️ ¡PELIGRO! amenaza de asteroide ⚠️"
   ,
   "page3": {
-    "title": "SOBRE NOSOTROS",
-    "team_name": "Equipo Meteoritos",
+  "title": "SOBRE NOSOTROS",
+  "team_name": "Equipo Mateorito",
   "team_description": "Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge",
     "members": [
-      "Centeno Angel Tomás","Fránco Micaela","Ávila Boeri Simón","Favier Zakowicz Joaquín","Daniele Malena","Andrade Ignacio Martin"
+      "Franco Micaela",
+      "Avila Boeri Simón",
+      "Daniele Malena",
+      "Andrade Ignacio Martin",
+      "Favier Zakowicz Joaquín",
+      "Centeno Angel Tomás"
     ],
     "footer": "NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA"
   }
