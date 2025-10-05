@@ -1,8 +1,199 @@
 
-html, body {
-  margin: 0;
-  padding: 0;
+/* Marco Principal */
+.marco-principal {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  background: #0B3D91;
+  background-image: url("FondoEspacio.png");
+  background-size: cover;
+  background-position: center;
 }
-canvas {
-  display: block;
+
+/* Fondo Espacio */
+.Fondo-Espacio {
+  position: absolute;
+  width: 1536px;
+  height: 1024px;
+  left: -48px;
+  top: 0px;
+  object-fit: cover;
+}
+
+/* Título principal */
+.SIMULACION-DE {
+  position: absolute;
+  width: 1521px;
+  height: 89px;
+  left: calc(50% - 1521px/2 + 89px);
+  top: 80px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 62px;
+  color: #FFFFFF;
+}
+
+/* Texto descriptivo */
+.explora-como-peque {
+  position: absolute;
+  width: 1521px;
+  height: 89px;
+  left: calc(50% - 1521px/2 + 110.5px);
+  top: 596px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* Botón Visualizar Simulación */
+.BotonVisualizarSimulacion {
+  position: absolute;
+  width: 592px;
+  height: 110px;
+  left: 535px;
+  top: 715px;
+  background: #FC3D21;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BotonVisualizarSimulacion .texto-boton {
+  font-family: 'Arsenal SC', sans-serif;
+  font-weight: 700;
+  font-size: 45px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Botón Asteroides */
+.BotonAsteroides {
+  position: absolute;
+  width: 229px;
+  height: 40px;
+  left: 24px;
+  top: 303px;
+  background: linear-gradient(90deg, #FC3D21 0%, #962414 100%);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BotonAsteroides .texto-boton {
+  font-family: 'Arsenal SC', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Botón Simulación */
+.BotonSimulacionMenu {
+  position: absolute;
+  width: 229px;
+  height: 40px;
+  left: 24px;
+  top: 388px;
+  background: linear-gradient(90deg, #FC3D21 0%, #962414 100%);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BotonSimulacionMenu .texto-boton {
+  font-family: 'Arsenal SC', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Botón Sobre Nosotros */
+.BotonSobreNosotros {
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  left: 24px;
+  top: 473px;
+  background: linear-gradient(90deg, #FC3D21 0%, #962414 100%);
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BotonSobreNosotros .texto-boton {
+  font-family: 'Arsenal SC', sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Logos del footer */
+.NASA {
+  position: absolute;
+  width: 126px;
+  height: 103px;
+  left: 24px;
+  top: 900px;
+}
+
+.SPACE-APPS-CHALLENGE {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  left: 169px;
+  top: 888px;
+}
+
+.logo-mateoritos {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 112px;
+  height: 121px;
+  z-index: 2; /* Asegura que esté por encima del fondo */
+}
+
+/* Texto del footer */
+.text-wrapper {
+  position: absolute;
+  width: 684px;
+  height: 49px;
+  left: calc(50% - 684px/2 + 111px);
+  top: 978px;
+  font-family: 'Bai Jamjuree', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
 }
