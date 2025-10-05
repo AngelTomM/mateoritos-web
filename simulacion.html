@@ -21,14 +21,17 @@
           </div>
           <!-- Controls: native HTML ranges to replace p5 sliders -->
           <div id="controls" style="display:flex;flex-direction:column;gap:8px; margin-top:8px;">
-            <label style="color:white; font-weight:700;">a (UA)
+            <label style="color:white; font-weight:700; display:flex; align-items:center; gap:8px;">a (UA)
               <input id="a-range" type="range" min="0.00001" max="1.6" step="0.000001" value="1.6" style="width:100%;">
+              <span id="a-val" style="min-width:70px;text-align:right;color:#fff;font-weight:700;">1.600000</span>
             </label>
-            <label style="color:white; font-weight:700;">e (excentricidad)
+            <label style="color:white; font-weight:700; display:flex; align-items:center; gap:8px;">e (excentricidad)
               <input id="e-range" type="range" min="0" max="0.99" step="0.001" value="0.8611" style="width:100%;">
+              <span id="e-val" style="min-width:60px;text-align:right;color:#fff;font-weight:700;">0.861</span>
             </label>
-            <label style="color:white; font-weight:700;">i (°)
+            <label style="color:white; font-weight:700; display:flex; align-items:center; gap:8px;">i (°)
               <input id="i-range" type="range" min="0" max="45" step="0.01" value="4.10" style="width:100%;">
+              <span id="i-val" style="min-width:50px;text-align:right;color:#fff;font-weight:700;">4.10</span>
             </label>
           </div>
           <!-- Info values (populated by the sketch) -->
@@ -70,5 +73,22 @@
       });
     </script>
     <script src="sketch.js"></script>
+    <script>
+      // live value update for ranges
+      document.addEventListener('DOMContentLoaded', () => {
+        const aRange = document.getElementById('a-range');
+        const eRange = document.getElementById('e-range');
+        const iRange = document.getElementById('i-range');
+        const aVal = document.getElementById('a-val');
+        const eVal = document.getElementById('e-val');
+        const iVal = document.getElementById('i-val');
+        function updateA() { if (aVal && aRange) aVal.textContent = parseFloat(aRange.value).toFixed(6); }
+        function updateE() { if (eVal && eRange) eVal.textContent = parseFloat(eRange.value).toFixed(3); }
+        function updateI() { if (iVal && iRange) iVal.textContent = parseFloat(iRange.value).toFixed(2); }
+        if (aRange) aRange.addEventListener('input', updateA); updateA();
+        if (eRange) eRange.addEventListener('input', updateE); updateE();
+        if (iRange) iRange.addEventListener('input', updateI); updateI();
+      });
+    </script>
   </body>
 </html>
