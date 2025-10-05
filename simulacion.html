@@ -16,13 +16,14 @@
         background-position: center;
         background-repeat: no-repeat;
       }
-      /* Hide the inline image used previously to avoid double rendering */
-      .ventana .chatgpt-image-oct { display: none; }
+        /* Ensure the visible UI sits above the fixed background and add spacing for the info section */
+        .ventana { position: relative; z-index: 2; }
+        .rectangle-2 { z-index: 3; }
+        .space-page-content { margin-top: 48px; padding: 32px 20px 80px; }
     </style>
   </head>
   <body class="sim-page">
     <div class="ventana">
-  <img class="chatgpt-image-oct" src="FondoEspacio.png" />
       <div class="rectangle"></div>
       <p class="SIMULACION-DE">SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES</p>
       <div class="div" id="left-panel">
