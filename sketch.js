@@ -17,34 +17,7 @@ async function setup() {
   earthTexture = await loadImage('https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg');
   moonTexture = await loadImage('https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg');
 
-  aSlider = createSlider(0.00001, 1.6, 1.6, 0.000001);
-  eSlider = createSlider(0.0, 0.99, 0.8611, 0.001);
-  iSlider = createSlider(0, 45, 4.10, 0.01);
-  // move sliders into left panel so they appear inside the card
-  const leftPanel = document.getElementById('left-panel');
-  if (leftPanel) {
-    aSlider.parent(leftPanel);
-    eSlider.parent(leftPanel);
-    iSlider.parent(leftPanel);
-    // basic inline styles for layout inside the left panel
-    aSlider.elt.style.display = 'block';
-    aSlider.elt.style.margin = '8px 0';
-    eSlider.elt.style.display = 'block';
-    eSlider.elt.style.margin = '8px 0';
-    iSlider.elt.style.display = 'block';
-    iSlider.elt.style.margin = '8px 0';
-    aSlider.style('width', '200px');
-    eSlider.style('width', '200px');
-    iSlider.style('width', '200px');
-  } else {
-    // fallback to absolute positioning
-    aSlider.position(10, 10);
-    aSlider.style('width', '200px');
-    eSlider.position(10, 40);
-    eSlider.style('width', '200px');
-    iSlider.position(10, 70);
-    iSlider.style('width', '200px');
-  }
+  // Sliders replaced by native HTML ranges in the left panel; we'll read them each frame
 
   // Create info divs but parent them to left-panel containers so they appear inside the card
   infoDiv = createDiv('');
@@ -94,9 +67,13 @@ async function setup() {
 function draw() {
   if (!earthTexture || !moonTexture) return;
 
-  a = aSlider.value();
-  e = eSlider.value();
-  i = iSlider.value();
+  // read values from DOM ranges
+  const aRange = document.getElementById('a-range');
+  const eRange = document.getElementById('e-range');
+  const iRange = document.getElementById('i-range');
+  a = aRange ? parseFloat(aRange.value) : 1.6;
+  e = eRange ? parseFloat(eRange.value) : 0.8611;
+  i = iRange ? parseFloat(iRange.value) : 4.1;
 
   systemScaleFactor = 300 / (a * (1 + e));
   let perigeoAU = a * (1 - e);

@@ -19,6 +19,18 @@
             <button class="slide-btn" data-slide="2">Slide 2</button>
             <button class="slide-btn" data-slide="3">Slide 3</button>
           </div>
+          <!-- Controls: native HTML ranges to replace p5 sliders -->
+          <div id="controls" style="display:flex;flex-direction:column;gap:8px; margin-top:8px;">
+            <label style="color:white; font-weight:700;">a (UA)
+              <input id="a-range" type="range" min="0.00001" max="1.6" step="0.000001" value="1.6" style="width:100%;">
+            </label>
+            <label style="color:white; font-weight:700;">e (excentricidad)
+              <input id="e-range" type="range" min="0" max="0.99" step="0.001" value="0.8611" style="width:100%;">
+            </label>
+            <label style="color:white; font-weight:700;">i (°)
+              <input id="i-range" type="range" min="0" max="45" step="0.01" value="4.10" style="width:100%;">
+            </label>
+          </div>
           <!-- Info values (populated by the sketch) -->
           <div id="info-values"></div>
           <!-- Danger banner will be placed below the slides/info by the sketch -->
