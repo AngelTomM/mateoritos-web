@@ -101,9 +101,16 @@
         updatePage3Texts();
       });
 
-      // Detectar cambio de idioma y actualizar textos
+
+      // Detectar cambio de idioma desde otras pestañas/páginas
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'mateoritos_lang_event') {
+          i18n.load().then(updatePage3Texts);
+        }
+      });
+      // Detectar cambio de idioma local (por si alguna página dispara el evento)
       window.addEventListener('languageChanged', () => {
-        updatePage3Texts();
+        i18n.load().then(updatePage3Texts);
       });
 
       document.getElementById('back-btn').addEventListener('click', () => {
