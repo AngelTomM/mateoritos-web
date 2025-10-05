@@ -74,8 +74,8 @@ body {
   left: 55px;
   top: 158px;
   font-weight: 700;
-  font-size: 45px;
-  line-height: 56px;
+  font-size: 22px;
+  line-height: 28px;
   color: #FFFFFF;
   z-index: 4;
 }
@@ -123,12 +123,11 @@ body {
 }
 /* Botón igual al de la página 2 */
 .BotonVisualizarSimulacion {
-  position: absolute;
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
   width: 300px;
   height: 60px;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
   background: #FC3D21;
   box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: 25px;
@@ -143,7 +142,7 @@ body {
   color: #fff;
   text-transform: uppercase;
   text-align: center;
-  z-index: 20;
+  z-index: 100;
   transition: filter 0.2s;
 }
 .BotonVisualizarSimulacion:hover {
