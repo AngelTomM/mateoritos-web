@@ -8,18 +8,27 @@
     <!-- Styles for the long informational section from new/ -->
     <link rel="stylesheet" href="new/style_new2.css" />
     <style>
-      /* Apply a fixed background only for this page so scroll keeps the starfield in place */
-      body.sim-page {
+      /* Make sure html/body occupy full height and reset margins */
+      html, body { height: 100%; margin: 0; padding: 0; }
+      /* Use a fixed pseudo-element to render the background so it never scrolls */
+      body.sim-page { position: relative; }
+      body.sim-page::before {
+        content: "";
+        position: fixed;
+        inset: 0;
         background-image: url('FondoEspacio.png');
-        background-attachment: fixed;
         background-size: cover;
-        background-position: center;
+        background-position: center center;
         background-repeat: no-repeat;
+        transform: translateZ(0);
+        will-change: transform;
+        z-index: 0;
+        pointer-events: none;
       }
-        /* Ensure the visible UI sits above the fixed background and add spacing for the info section */
-        .ventana { position: relative; z-index: 2; }
-        .rectangle-2 { z-index: 3; }
-        .space-page-content { margin-top: 48px; padding: 32px 20px 80px; }
+      /* Ensure the visible UI sits above the fixed background and add spacing for the info section */
+      .ventana { position: relative; z-index: 1; }
+      .rectangle-2 { z-index: 2; }
+      .space-page-content { margin-top: 48px; padding: 32px 20px 80px; position: relative; z-index: 3; }
     </style>
   </head>
   <body class="sim-page">
