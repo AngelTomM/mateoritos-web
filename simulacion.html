@@ -30,6 +30,8 @@
       .rectangle-2 { z-index: 2; }
       .space-page-content { margin-top: 48px; padding: 32px 20px 80px; position: relative; z-index: 3; }
     </style>
+    <!-- MathJax: render LaTeX math expressions on this page -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
   <body class="sim-page">
     <div class="ventana">
@@ -425,46 +427,22 @@
     <div class="formula-group">
       <span class="formula-title">Kepler</span>
       <div class="formula-math">
-        <span class="mu-notation">&mu; = GM</span> 
-        = 
-        <span class="fraction-display">
-          <span class="numerator">4&middot;&pi;<sup>2</sup> &middot; a<sup>3</sup></span>
-          <span class="denominator">T<sup>2</sup></span>
-        </span>
-        <span class="formula-note">Con a [Km] y T [s]</span>
+        \[\mu = GM = \frac{4\pi^{2} a^{3}}{T^{2}}\]
+        <div class="formula-note">Con a [km] y T [s]</div>
       </div>
     </div>
 
     <div class="formula-group">
       <span class="formula-title">Velocidad del asteroide</span>
       <div class="formula-math">
-        <span class="v-notation">v</span>
-        = 
-        <span class="sqrt-display">&radic;</span>
-        <span class="sqrt-content">
-          <span class="mu-notation">&mu;</span> 
-          <span class="parentheses">(</span>
-            <span class="fraction-display small-fraction">
-              <span class="numerator">2</span>
-              <span class="denominator">r</span>
-            </span>
-            -
-            <span class="fraction-display small-fraction">
-              <span class="numerator">1</span>
-              <span class="denominator">a</span>
-            </span>
-          <span class="parentheses">)</span>
-        </span>
+        \[v = \sqrt{\mu\left(\frac{2}{r} - \frac{1}{a}\right)}\]
       </div>
     </div>
 
     <div class="formula-group">
       <span class="formula-title">Distancia con el planeta Tierra</span>
       <div class="formula-math">
-        <span class="moid-notation">Moid</span>
-        = 
-        <span class="min-notation">min</span><sub>&mu;, &nu;</sub>
-        <span>||<span class="vector-r">r</span><sub>1</sub>(<span class="vector-r">v</span>) - <span class="vector-r">r</span><sub>2</sub>(<span class="vector-r">v</span>)||</span>
+        \[\mathrm{MOID} = \min_{\nu,\mu} \|\mathbf{r}_1(\nu) - \mathbf{r}_2(\mu)\|\]
       </div>
     </div>
   </section>
