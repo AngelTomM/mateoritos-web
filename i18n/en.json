@@ -1,4 +1,19 @@
 {
+  "page4": {
+    "title": "Asteroids Info",
+    "titulo": "What is an asteroid?",
+    "texto_asteroide": "An asteroid is a rocky or metallic body smaller than a planet, which orbits around the Sun and is part of the primitive remains of the formation process of the Solar System. Most are located in the asteroid belt between Mars and Jupiter.",
+    "titulo_sizes": "Sizes And shapes",
+    "texto_sizes": "They range from a few meters to hundreds of kilometers in diameter (Ceres, the largest one, is about 940 km). They usually have irregular shapes and cratered surfaces, as they don’t have enough gravity to take on a spherical shape like planets do.",
+    "titulo_orbits": "Orbits",
+    "texto_orbits": "The orbits of asteroids are elliptical and irregular, and they can have very different inclinations and eccentricities. Some group together in families with similar paths, while others are deflected by the gravity of planets, altering their course or even leaving their original region.",
+    "titulo_risk": "Risk and Effects",
+    "texto_risk": "Asteroids close to Earth represent a potential risk both for the possibility of impact and for the gravitational effects they can generate when passing at a short distance. These bodies can slightly alter the orbits of satellites or even influence the trajectory of other space objects. In case of collision with the Earth, the consequences will depend on the size; speed and composition of the asteroid, ranging from the formation of craters to causing global disasters. Among the most significant effects of an impact are shock waves with great over-pressure, tsunamis, earthquakes, widespread fires and alterations in the atmosphere that could affect the planet's climate.",
+    "titulo_observation": "Observation and Monitoring",
+    "texto_observation": "Organizations such as NASA, ESA, and JPL maintain up-to-date catalogs of Near-Earth Asteroids (NEAs). Their detection and tracking are carried out using ground-based and space telescopes capable of estimating their orbits, sizes, and future trajectories. The level of impact risk is assessed using the Turin Scale and the Palermo Scale, which help classify the degree of hazard and prioritize monitoring and prevention efforts.",
+    "creditos": "Design and development by the Mateoritos team – NASA Space Apps Challenge – San Luis, Argentina."
+  },
+  
   "title": "TRAJECTORY SIMULATION: <br />ORBITAL BEHAVIOR OF ASTEROIDS",
   "explore": "Explore how small variations in orbital parameters <br />can avoid a possible impact with planet Earth",
   "visualizar": "View Simulation",
@@ -24,16 +39,16 @@
   "formulas_h2": "Formulas that determine the mentioned parameters:",
   "formula_kepler": "Kepler",
   "formula_velocity": "Asteroid velocity",
+
   "formula_distance": "Distance to planet Earth",
-  "current_values": "Current values:",
   "perigee": "Perigee",
   "moid_label": "MOID",
   "km": "km",
   "danger": "⚠️ DANGER! asteroid threat ⚠️"
   ,
   "page3": {
-  "title": "ABOUT US",
-  "team_name": "Meteoritos Team",
+    "title": "ABOUT US",
+    "team_name": "Meteoritos Team",
     "team_description": "A team made up of Mechatronic Engineering students from the National University of San Luis participating in the NASA Space Apps Challenge.",
     "members": [
       "Franco Micaela",

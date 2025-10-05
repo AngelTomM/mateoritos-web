@@ -1,5 +1,18 @@
 {
-  "title": "SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES",
+  "page4": {
+    "title": "¿Qué es un asteroide?",
+    "titulo": "¿Qué es un asteroide?",
+    "texto_asteroide": "Un asteroide es un cuerpo rocoso o metálico más pequeño que un planeta, que orbita alrededor del Sol y forma parte de los restos primitivos del proceso de formación del Sistema Solar. La mayoría se encuentra en el cinturón de asteroides entre Marte y Júpiter.",
+    "titulo_sizes": "Tamaños y formas",
+    "texto_sizes": "Varían desde unos pocos metros hasta cientos de kilómetros de diámetro (Ceres, el mayor, mide unos 940 km). Suelen tener formas irregulares y superficies craterizadas, ya que no tienen suficiente gravedad para adoptar una forma esférica como los planetas.",
+    "titulo_orbits": "Órbitas",
+    "texto_orbits": "Las órbitas de los asteroides son elípticas e irregulares, y pueden tener inclinaciones y excentricidades muy diferentes. Algunos se agrupan en familias con trayectorias similares, mientras que otros son desviados por la gravedad de los planetas, alterando su curso o incluso saliendo de su región original.",
+    "titulo_risk": "Riesgo y efectos",
+    "texto_risk": "Los asteroides cercanos a la Tierra representan un riesgo potencial tanto por la posibilidad de impacto como por los efectos gravitacionales que pueden generar al pasar a corta distancia. Estos cuerpos pueden alterar ligeramente las órbitas de satélites o incluso influir en la trayectoria de otros objetos espaciales. En caso de colisión con la Tierra, las consecuencias dependerán del tamaño, velocidad y composición del asteroide, y pueden ir desde la formación de cráteres hasta causar desastres globales. Entre los efectos más significativos de un impacto se encuentran ondas de choque con gran sobrepresión, tsunamis, terremotos, incendios generalizados y alteraciones en la atmósfera que podrían afectar el clima del planeta.",
+    "titulo_observation": "Observación y monitoreo",
+    "texto_observation": "Organizaciones como la NASA, la ESA y el JPL mantienen catálogos actualizados de Asteroides Cercanos a la Tierra (NEAs). Su detección y seguimiento se realiza mediante telescopios terrestres y espaciales capaces de estimar sus órbitas, tamaños y trayectorias futuras. El nivel de riesgo de impacto se evalúa mediante la Escala de Turín y la Escala de Palermo, que ayudan a clasificar el grado de peligro y priorizar los esfuerzos de monitoreo y prevención.",
+    "creditos": "Diseño y desarrollo por el equipo Mateoritos – NASA Space Apps Challenge – San Luis, Argentina."
+  },
   "explore": "Explora como pequeñas variaciones en los parámetros orbitales <br />pueden evitar un posible impacto con el planeta tierra",
   "visualizar": "Visualizar Simulación",
   "asteroides": "Asteroides",
@@ -24,17 +37,17 @@
   "formulas_h2": "Fórmulas que determinan los parámetros mencionados:",
   "formula_kepler": "Kepler",
   "formula_velocity": "Velocidad del asteroide",
+
   "formula_distance": "Distancia con el planeta Tierra",
-  "current_values": "Valores actuales:",
   "perigee": "Perigeo",
   "moid_label": "MOID",
   "km": "km",
   "danger": "⚠️ ¡PELIGRO! amenaza de asteroide ⚠️"
   ,
   "page3": {
-  "title": "SOBRE NOSOTROS",
-  "team_name": "Equipo Mateorito",
-  "team_description": "Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge",
+    "title": "SOBRE NOSOTROS",
+    "team_name": "Equipo Mateorito",
+    "team_description": "Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge",
     "members": [
       "Franco Micaela",
       "Avila Boeri Simón",
