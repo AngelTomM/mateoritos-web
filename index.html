@@ -105,8 +105,6 @@
             const current = localStorage.getItem('mateoritos_lang') || 'es';
             const next = current === 'es' ? 'en' : 'es';
             applyLang(next);
-            // Notificar a otras pestañas/páginas del cambio de idioma
-            localStorage.setItem('mateoritos_lang_event', Date.now().toString());
           });
         })();
       </script>
