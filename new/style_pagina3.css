@@ -49,6 +49,9 @@
 .header-divider.red {
     background-color: #ff4757; /* Línea roja */
     width: 15%; /* Longitud de la línea roja como en la imagen */
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 6px;
 }
 
 .header-divider.white {
@@ -61,7 +64,7 @@
 /* --- Introducción del Equipo --- */
 .team-intro {
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 30px auto 0;
     padding-left: 0px;
 }
 
@@ -79,7 +82,7 @@
 /* --- Estilos de Miembros del Equipo (Grid) --- */
 .team-members {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 8px auto 30px;
     display: grid;
     /* 3 columnas en escritorio, 2 en tablet, 1 en móvil */
     grid-template-columns: repeat(3, 1fr); 
