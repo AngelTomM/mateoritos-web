@@ -4,7 +4,9 @@ body {
   width: 1440px;
   height: 2560px;
   background: #0B3D91;
-  background:url('FondoPag3.png');
+  background: url('../FondoEspacio.png');
+  background-size: cover;
+  background-position: center;
   margin: 0;
   font-family: 'Bai Jamjuree', sans-serif;
   overflow-x: hidden;
