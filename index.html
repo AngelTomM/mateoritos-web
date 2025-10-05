@@ -1,15 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
-
+    <meta
+      name="description"
+      content="Simulación de trayectorias y comportamiento orbital de asteroides. Explora cómo pequeñas variaciones en los parámetros orbitales pueden evitar un posible impacto con el planeta tierra."
+    />
+    <title>Simulación de Trayectorias - Comportamiento Orbital de Asteroides</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main>
+    <main class="marco-principal">
+      <!-- Imagen de fondo eliminada, ahora se usa en el CSS -->
+      <header>
+        <h1 class="SIMULACION-DE">SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES</h1>
+      </header>
+      <section class="content-section">
+        <p class="explora-como-peque">
+          Explora como pequeñas variaciones en los parámetros orbitales <br />pueden evitar un posible impacto con el
+          planeta tierra
+        </p>
+        <a href="#simulacion" class="boton-visualizar">
+          <button class="BotonVisualizarSimulacion">
+            <span class="texto-boton">Visualizar Simulación</span>
+          </button>
+        </a>
+      </section>
+      <nav class="navigation" aria-label="Navegación principal">
+        <ul>
+          <li>
+            <a href="#asteroides">
+              <button class="BotonAsteroides">
+                <span class="texto-boton">Asteroides</span>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="#simulacion">
+              <button class="BotonSimulacionMenu">
+                <span class="texto-boton">Simulación</span>
+              </button>
+            </a>
+          </li>
+          <li>
+            <a href="#sobre-nosotros">
+              <button class="BotonSobreNosotros">
+                <span class="texto-boton">Sobre Nosotros</span>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <footer class="footer">
+        <div class="footer-logos">
+          <img class="NASA" src="NASA.png" alt="Logo de NASA" />
+          <img class="SPACE-APPS-CHALLENGE" src="SPACEAPPSCHALLENGE.png" alt="Logo de Space Apps Challenge" />
+        </div>
+        <img class="logo-mateoritos" src="LogoMateoritos.png" alt="Logo de Meteoritos" />
+        <p class="text-wrapper">UNSL - Facultad de Ingeniería y Ciencias Agropecuarias</p>
+      </footer>
     </main>
-    <script src="sketch.js"></script>
   </body>
 </html>
