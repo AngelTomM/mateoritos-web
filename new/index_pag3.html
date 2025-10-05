@@ -63,12 +63,12 @@
 
         function chooseImageFor(name){
           const n = (name||'').toLowerCase();
-          if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.jpg';
-          if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.jpg';
-          if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.jpg';
-          if(n.includes('mica') || n.includes('fránco') || n.includes('franco')) return '../IMG.mica.jpg';
-          if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.jpg';
-          if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.jpg';
+          if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.png';
+          if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.png';
+          if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.png';
+          if(n.includes('mica') || n.includes('fránco') || n.includes('franco')) return '../IMG.mica.png';
+          if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.png';
+          if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.png';
           return '';
         }
 
@@ -104,11 +104,11 @@
             const bases = [];
             variants.forEach(v => {
               if(!v) return;
-              bases.push(`../IMG.${v}.jpg`);
               bases.push(`../IMG.${v}.png`);
+              bases.push(`../IMG.${v}.jpg`);
             });
-            // also try some explicit names used in repo
-            bases.push('../IMG.Ignacio.jpg','../IMG.Joaquin.jpg','../IMG.Malena.jpg','../IMG.mica.jpg','../IMG.Simon.jpg','../IMG.Tomas.jpg');
+            // also try some explicit names used in repo (png preferred)
+            bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
             // remove duplicates
             return Array.from(new Set(bases));
           })();
@@ -151,10 +151,10 @@
                 const bases = [];
                 variants.forEach(v => {
                   if(!v) return;
-                  bases.push(`../IMG.${v}.jpg`);
                   bases.push(`../IMG.${v}.png`);
+                  bases.push(`../IMG.${v}.jpg`);
                 });
-                bases.push('../IMG.Ignacio.jpg','../IMG.Joaquin.jpg','../IMG.Malena.jpg','../IMG.mica.jpg','../IMG.Simon.jpg','../IMG.Tomas.jpg');
+                bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
                 return Array.from(new Set(bases));
               })();
               const photoDiv = document.createElement('div');
