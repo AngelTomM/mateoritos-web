@@ -5,7 +5,7 @@ body {
   font-family: 'Bai Jamjuree', sans-serif;
   position: relative;
   width: 1440px;
-  height: 1155px;
+  height: 1024px; /* match main page resolution */
   background: #0B3D91;
   overflow: hidden;
 }
@@ -21,7 +21,7 @@ body {
 .meteoro-top {
   position: absolute;
   width: 1446px;
-  height: 964px;
+  height: 880px;
   left: -6px;
   top: 0px;
   background: url('../FondoEspacio.png');
@@ -32,9 +32,9 @@ body {
 .meteoro-bottom {
   position: absolute;
   width: 1440px;
-  height: 301px;
+  height: 200px;
   left: 0px;
-  top: 964px;
+  top: 855px;
   background: url('../FondoEspacio.png');
   background-size: cover;
   z-index: 2;
@@ -45,7 +45,7 @@ body {
   width: 1440px;
   height: 5px;
   left: 0px;
-  top: 154px;
+  top: 137px;
   background: #FC3D21;
   transform: matrix(1, 0, 0, -1, 0, 0);
   z-index: 3;
@@ -56,7 +56,7 @@ body {
   width: 583px;
   height: 76px;
   left: calc(50% - 583px/2 - 373.5px);
-  top: 59px;
+  top: 52px;
   font-weight: 700;
   font-size: 50px;
   line-height: 62px;
@@ -69,7 +69,7 @@ body {
   width: 522px;
   height: 96px;
   left: 55px;
-  top: 178px;
+  top: 158px;
   font-weight: 700;
   font-size: 45px;
   line-height: 56px;
@@ -82,7 +82,7 @@ body {
   width: 1367px;
   height: 139px;
   left: 55px;
-  top: 248px;
+  top: 220px;
   font-weight: 700;
   font-size: 30px;
   line-height: 38px;
@@ -99,12 +99,12 @@ body {
   background-position: center;
   z-index: 5;
 }
-.ellipse.mica { left: 630px; top: 387px; background-image: url('../IMG.mica.png'); }
-.ellipse.tomas { left: 229px; top: 395px; background-image: url('../IMG.Tomas.png'); }
-.ellipse.joaquin { left: 229px; top: 683px; background-image: url('../IMG.Joaquin.png'); }
-.ellipse.ignacio { left: 1037px; top: 682px; background-image: url('../IMG.Ignacio.png'); }
-.ellipse.simon { left: 1037px; top: 387px; background-image: url('../IMG.Simon.png'); }
-.ellipse.malena { left: 633px; top: 683px; background-image: url('../IMG.Malena.png'); }
+.ellipse.mica { left: 630px; top: 343px; background-image: url('../IMG.mica.png'); }
+.ellipse.tomas { left: 229px; top: 350px; background-image: url('../IMG.Tomas.png'); }
+.ellipse.joaquin { left: 229px; top: 606px; background-image: url('../IMG.Joaquin.png'); }
+.ellipse.ignacio { left: 1037px; top: 605px; background-image: url('../IMG.Ignacio.png'); }
+.ellipse.simon { left: 1037px; top: 343px; background-image: url('../IMG.Simon.png'); }
+.ellipse.malena { left: 633px; top: 606px; background-image: url('../IMG.Malena.png'); }
 
 .nombre {
   position: absolute;
@@ -114,19 +114,19 @@ body {
   color: #FFFFFF;
   z-index: 6;
 }
-.nombre.mica { width: 336px; height: 58px; left: 578px; top: 577px; }
-.nombre.simon { width: 381px; height: 55px; left: 949px; top: 577px; }
-.nombre.malena { width: 381px; height: 55px; left: 563px; top: 882px; }
-.nombre.ignacio { width: 487px; height: 51px; left: 924px; top: 882px; }
-.nombre.joaquin { width: 487px; height: 51px; left: 68px; top: 882px; }
-.nombre.tomas { width: 487px; height: 51px; left: 103px; top: 577px; }
+.nombre.mica { width: 336px; height: 58px; left: 578px; top: 512px; }
+.nombre.simon { width: 381px; height: 55px; left: 949px; top: 512px; }
+.nombre.malena { width: 381px; height: 55px; left: 563px; top: 782px; }
+.nombre.ignacio { width: 487px; height: 51px; left: 924px; top: 782px; }
+.nombre.joaquin { width: 487px; height: 51px; left: 68px; top: 782px; }
+.nombre.tomas { width: 487px; height: 51px; left: 103px; top: 512px; }
 
 .logo-unsl {
   position: absolute;
   width: 88px;
-  height: 121px;
+  height: 80px;
   left: 68px;
-  top: 1028px;
+  top: 912px;
   background: url('../UNSL.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -135,10 +135,10 @@ body {
 
 .logo-fica {
   position: absolute;
-  width: 267px;
-  height: 121px;
+  width: 200px;
+  height: 80px;
   left: 289px;
-  top: 1019px;
+  top: 904px;
   background: url('../FICA_logo.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -163,7 +163,7 @@ body {
   width: 544px;
   height: 20px;
   left: 862px;
-  top: 1108px;
+  top: 980px;
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;

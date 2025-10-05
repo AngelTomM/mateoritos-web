@@ -8,78 +8,104 @@
     <link rel="stylesheet" href="style_pagina3.css" />
   </head>
   <body>
-    <section class="about-us-section">
-      <div class="header-content">
-        <!doctype html>
-        <html lang="es">
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title data-i18n="page3.title">Team</title>
-            <link rel="stylesheet" href="style_3.css">
-          </head>
-          <body>
-            <div class="background"></div>
-            <div class="meteoro-top"></div>
-            <div class="meteoro-bottom"></div>
+    <div class="background"></div>
+    <div class="meteoro-top"></div>
+    <div class="meteoro-bottom"></div>
 
-            <div class="rectangle"></div>
+    <div class="rectangle"></div>
 
-            <h1 class="titulo" id="page-title">Equipo Mateoritos</h1>
-            <div class="team" id="team-name">Mateoritos</div>
-            <div class="descripcion" id="team-desc">Aplicación de ejemplo para la demostración</div>
+    <h1 class="titulo" id="page-title">Equipo Mateoritos</h1>
+    <div class="team" id="team-name">Mateoritos</div>
+    <div class="descripcion" id="team-desc">Aplicación de ejemplo para la demostración</div>
 
-            <!-- member ellipses (background images) -->
-            <div class="ellipse mica" data-member="mica"></div>
-            <div class="ellipse tomas" data-member="tomas"></div>
-            <div class="ellipse joaquin" data-member="joaquin"></div>
-            <div class="ellipse ignacio" data-member="ignacio"></div>
-            <div class="ellipse simon" data-member="simon"></div>
-            <div class="ellipse malena" data-member="malena"></div>
+    <!-- member ellipses (background images) -->
+    <div class="ellipse mica" data-member="mica"></div>
+    <div class="ellipse tomas" data-member="tomas"></div>
+    <div class="ellipse joaquin" data-member="joaquin"></div>
+    <div class="ellipse ignacio" data-member="ignacio"></div>
+    <div class="ellipse simon" data-member="simon"></div>
+    <div class="ellipse malena" data-member="malena"></div>
 
-            <!-- names positioned under ellipses -->
-            <div class="nombre mica" id="name-mica">Mica</div>
-            <div class="nombre simon" id="name-simon">Simon</div>
-            <div class="nombre malena" id="name-malena">Malena</div>
-            <div class="nombre ignacio" id="name-ignacio">Ignacio</div>
-            <div class="nombre joaquin" id="name-joaquin">Joaquin</div>
-            <div class="nombre tomas" id="name-tomas">Tomas</div>
+    <!-- names positioned under ellipses -->
+    <div class="nombre mica" id="name-mica">Mica</div>
+    <div class="nombre simon" id="name-simon">Simon</div>
+    <div class="nombre malena" id="name-malena">Malena</div>
+    <div class="nombre ignacio" id="name-ignacio">Ignacio</div>
+    <div class="nombre joaquin" id="name-joaquin">Joaquin</div>
+    <div class="nombre tomas" id="name-tomas">Tomas</div>
 
-            <div class="logo-unsl"></div>
-            <div class="logo-fica"></div>
+    <div class="logo-unsl"></div>
+    <div class="logo-fica"></div>
 
-            <div class="footer"> <div id="footer-text">Universidad Nacional de San Luis - FICA</div></div>
+    <div class="footer"> <div id="footer-text">Universidad Nacional de San Luis - FICA</div></div>
 
-            <button id="back-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Volver al inicio</button>
+    <button id="back-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Volver al inicio</button>
 
-            <script src="../i18n/loader.js"></script>
-            <script>
-              // populate texts from i18n
-              i18n.load().then(() => {
-                const t = i18n.t;
-                document.getElementById('page-title').textContent = t('page3.title');
-                document.getElementById('team-name').textContent = t('page3.teamName');
-                document.getElementById('team-desc').textContent = t('page3.description');
+    <script src="../i18n/loader.js"></script>
+    <script>
+      // populate texts from i18n
+      i18n.load().then(() => {
+        const t = i18n.t;
+        document.getElementById('page-title').textContent = t('page3.title');
+        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || t('page3.teamName');
+        document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description');
 
-                const members = t('page3.members');
-                // members is expected as array of { id: 'mica', name: 'Mica' }
-                members.forEach(m => {
-                  const nameEl = document.getElementById('name-' + m.id);
-                  if (nameEl) nameEl.textContent = m.name;
-                  // set ellipse background if element exists
-                  const el = document.querySelector('.ellipse.' + m.id);
-                  if (el) {
-                    el.style.backgroundImage = `url('../IMG.${m.id}.png')`;
-                  }
-                });
-              });
+        const members = t('page3.members') || [];
+        // Convert each full name to "Apellido Nombre" format
+        members.forEach(fullName => {
+          const tokens = (fullName || '').trim().split(/\s+/).filter(Boolean);
+          if(tokens.length === 0) return;
+          // Last token as apellido (if name is e.g. 'Centeno Angel Tomás' => apellido 'Centeno', rest 'Angel Tomás')
+          const apellido = tokens[0];
+          const resto = tokens.slice(1).join(' ');
+          // find matching id by checking known ids in elements
+          // attempt to match by checking IMG filenames (case-insensitive)
+          const idCandidates = ['mica','tomas','joaquin','ignacio','simon','malena'];
+          // try to find element whose current text contains any token of the name
+          let foundId = null;
+          for(const id of idCandidates){
+            const el = document.getElementById('name-' + id);
+            if(!el) continue;
+            // compare with existing innerText or with filename heuristics
+            const cmp = fullName.toLowerCase();
+            if(cmp.includes(id) || el.textContent.toLowerCase().includes(id) || true){
+              // heuristic: match by order of appearance - pop first unmatched id
+              if(!foundId){ foundId = id; }
+            }
+          }
+          // fallback: if no foundId, try mapping by surnames known in dataset
+          const mapping = {
+            'Centeno':'tomas',
+            'Fránco':'mica',
+            'Franco':'mica',
+            'Ávila':'simon',
+            'Avila':'simon',
+            'Favier':'joaquin',
+            'Daniele':'malena',
+            'Andrade':'ignacio'
+          };
+          if(!foundId){
+            for(const k in mapping){ if(fullName.includes(k)){ foundId = mapping[k]; break; } }
+          }
+          if(!foundId) foundId = idCandidates.shift();
 
-              document.getElementById('back-btn').addEventListener('click', () => {
-                window.location.href = '../index_new.html';
-              });
-            </script>
-          </body>
-        </html>
+          const nameEl = document.getElementById('name-' + foundId);
+          if(nameEl) {
+            // display as 'Apellido Nombre' — using first token as apellido per dataset
+            const display = resto ? `${apellido} ${resto}` : apellido;
+            nameEl.textContent = display;
+          }
+          const el = document.querySelector('.ellipse.' + foundId);
+          if (el) {
+            el.style.backgroundImage = `url('../IMG.${foundId === 'mica' ? 'mica' : foundId[0].toUpperCase()+foundId.slice(1)}.png')`;
+          }
+        });
+      });
+
+      document.getElementById('back-btn').addEventListener('click', () => {
+        window.location.href = '../index_new.html';
+      });
+    </script>
             i++;
             if(i < basePaths.length){
               img.src = basePaths[i];
