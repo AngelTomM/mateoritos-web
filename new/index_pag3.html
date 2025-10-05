@@ -56,12 +56,12 @@
         const idOrder = ['mica','simon','malena','ignacio','joaquin','tomas'];
         // tokens to identify names in i18n (diacritics-insensitive)
         const surnameTokens = {
-          mica: ['micaela','franco','franco'],
-          simon: ['avila','avila boeri','avila boeri simon','simon','simón'],
-          malena: ['daniele','malena'],
-          ignacio: ['andrade','ignacio','martin'],
-          joaquin: ['favier','zakowicz','joaquin'],
-          tomas: ['centeno','angel','tomas']
+          mica: ['Micaela','Franco'],
+          simon: ['Avila','Boeri','Simón'],
+          malena: ['Daniele','Malena'],
+          ignacio: ['Andrade','Ignacio','Martin'],
+          joaquin: ['Favier','Zakowicz','Joaquin'],
+          tomas: ['Centeno','Martin','Angel','Tomas']
         };
 
         const normalize = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
