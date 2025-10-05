@@ -1,0 +1,33 @@
+{
+  "title": "TRAJECTORY SIMULATION: <br />ORBITAL BEHAVIOR OF ASTEROIDS",
+  "explore": "Explore how small variations in orbital parameters <br />can avoid a possible impact with planet Earth",
+  "visualizar": "View Simulation",
+  "asteroides": "Asteroids",
+  "simulacion": "Simulation",
+  "sobre": "About Us",
+  "slide1": "Asteroid 1",
+  "slide2": "Asteroid 2",
+  "slide3": "Asteroid 3",
+  "save_title": "Save parameters",
+  "reset": "Restore default presets",
+  "a_label": "a (AU)",
+  "e_label": "e (eccentricity)",
+  "i_label": "i (°)",
+  "back": "Back to home",
+  "recommendation_h2": "Recommendation:",
+  "recommendation_p": "Simulate the asteroids trajectory below to visualize their paths.",
+  "params_h1": "PHA asteroid parameters from NASA",
+  "table": [
+    "Asteroid","H=Absolute magnitude","a=Semi-major axis (AU)","q=Perihelion (AU)","Q=Aphelion (AU)","e=Eccentricity","i=Orbital inclination to the ecliptic (°)","moid=Minimum Orbit Intersection Distance with Earth (AU)","Period (years)"
+  ],
+  "nasa_criteria_p": "NASA considers asteroids <strong>PHA (Potentially Hazardous Asteroids)</strong> when they meet:",
+  "formulas_h2": "Formulas that determine the mentioned parameters:",
+  "formula_kepler": "Kepler",
+  "formula_velocity": "Asteroid velocity",
+  "formula_distance": "Distance to planet Earth",
+  "current_values": "Current values:",
+  "perigee": "Perigee",
+  "moid_label": "MOID",
+  "km": "km",
+  "danger": "⚠️ DANGER! asteroid threat ⚠️"
+}

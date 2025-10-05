@@ -1,0 +1,33 @@
+{
+  "title": "SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES",
+  "explore": "Explora como pequeñas variaciones en los parámetros orbitales <br />pueden evitar un posible impacto con el planeta tierra",
+  "visualizar": "Visualizar Simulación",
+  "asteroides": "Asteroides",
+  "simulacion": "Simulación",
+  "sobre": "Sobre Nosotros",
+  "slide1": "Asteroide 1",
+  "slide2": "Asteroide 2",
+  "slide3": "Asteroide 3",
+  "save_title": "Guardar parámetros",
+  "reset": "Restaurar presets por defecto",
+  "a_label": "a (UA)",
+  "e_label": "e (excentricidad)",
+  "i_label": "i (°)",
+  "back": "Volver al inicio",
+  "recommendation_h2": "Recomendación:",
+  "recommendation_p": "Simule la trayectoria de los asteroides a continuación para visualizar su trayectoria.",
+  "params_h1": "Parámetros de asteroides PHA de la NASA",
+  "table": [
+    "Asteroide","H=Brillo","a=Semieje Mayor (UA)","q=Perihelio (UA)","Q=Afelio (UA)","e=Excentricidad","i=Inclinación Orbital con respecto a la eclíptica (°)","moid=Distancia Mínima de Intersección Orbital con la Tierra (UA)","Período (años)"
+  ],
+  "nasa_criteria_p": "La NASA considera como asteroides <strong>PHA (Potencialmente Hazardous Asteroids)</strong> cuando cumplen:",
+  "formulas_h2": "Fórmulas que determinan los parámetros mencionados:",
+  "formula_kepler": "Kepler",
+  "formula_velocity": "Velocidad del asteroide",
+  "formula_distance": "Distancia con el planeta Tierra",
+  "current_values": "Valores actuales:",
+  "perigee": "Perigeo",
+  "moid_label": "MOID",
+  "km": "km",
+  "danger": "⚠️ ¡PELIGRO! amenaza de asteroide ⚠️"
+}
