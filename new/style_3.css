@@ -43,12 +43,12 @@ body {
 .rectangle {
   position: absolute;
   width: 1440px;
-  height: 5px;
+  height: 6px;
   left: 0px;
-  top: 137px;
+  top: 140px; /* placed below the title */
   background: #FC3D21;
   transform: matrix(1, 0, 0, -1, 0, 0);
-  z-index: 3;
+  z-index: 6;
 }
 
 .titulo {
@@ -124,25 +124,23 @@ body {
 .logo-unsl {
   position: absolute;
   width: 88px;
-  height: 80px;
+  height: 88px;
   left: 68px;
-  top: 912px;
-  background: url('../UNSL.png');
+  top: 880px; /* moved up so it's visible above footer */
+  background: url('../UNSL.png') no-repeat center;
   background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 7;
+  z-index: 12;
 }
 
 .logo-fica {
   position: absolute;
-  width: 200px;
-  height: 80px;
-  left: 289px;
-  top: 904px;
-  background: url('../FICA_logo.png');
+  width: 220px;
+  height: 88px;
+  left: 170px;
+  top: 876px; /* slightly higher to align with UNSL */
+  background: url('../FICA_logo.png') no-repeat center;
   background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 7;
+  z-index: 12;
 }
 
 .unsl-text {

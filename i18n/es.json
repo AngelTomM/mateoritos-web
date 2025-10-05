@@ -34,7 +34,7 @@
   "page3": {
     "title": "SOBRE NOSOTROS",
     "team_name": "Equipo Meteoritos",
-    "team_description": "Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis participando en el NASA Space Apps Challenge.",
+  "team_description": "Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge",
     "members": [
       "Centeno Angel Tomás","Fránco Micaela","Ávila Boeri Simón","Favier Zakowicz Joaquín","Daniele Malena","Andrade Ignacio Martin"
     ],
