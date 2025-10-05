@@ -25,10 +25,10 @@
       </div>
 
             <div class="footer-info">
-                    <div class="logos-container">
-                            <img src="" alt="Universidad Nacional de San Luis" class="university-logo">
-                            <img src="" alt="FICA - Facultad de Ingeniería y Ciencias Agropecuarias" class="fica-logo">
-                    </div>
+            <div class="logos-container">
+                <img src="../UNSL.png" alt="Universidad Nacional de San Luis" class="university-logo">
+                <img src="../SPACEAPPSCHALLENGE.png" alt="Space Apps Challenge" class="fica-logo">
+            </div>
                     <p class="challenge-footer" id="page3-footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
             </div>
     </section>
@@ -43,9 +43,23 @@
                 document.getElementById('page3-team-desc').textContent = d.team_description;
                 const membersCont = document.getElementById('page3-members');
                 membersCont.innerHTML = '';
-                d.members.forEach(name => {
-                    const card = document.createElement('div'); card.className = 'member-card';
-                    card.innerHTML = `<div class="member-photo-container"><img src="" alt="Foto de ${name}" class="member-photo"></div><p class="member-name">${name}</p>`;
+                // Map images to members by matching known name tokens to the IMG files in repo root
+                function chooseImageFor(name){
+                    const n = name.toLowerCase();
+                    if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.jpg';
+                    if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.jpg';
+                    if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.jpg';
+                    if(n.includes('mica') || n.includes('fránco')) return '../IMG.mica.jpg';
+                    if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.jpg';
+                    if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.jpg';
+                    return '';
+                }
+
+                d.members.forEach((name) => {
+                    const imgSrc = chooseImageFor(name);
+                    const card = document.createElement('div');
+                    card.className = 'member-card';
+                    card.innerHTML = `<div class="member-photo-container"><img src="${imgSrc}" alt="Foto de ${name}" class="member-photo"></div><p class="member-name">${name}</p>`;
                     membersCont.appendChild(card);
                 });
                 document.getElementById('page3-footer').textContent = d.footer;
