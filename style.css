@@ -223,11 +223,6 @@
   background-color: rgba(11,61,145,0.6);
   border-radius: 20px;
   border: 4px solid #fc3d21;
-  /* Use FondoEspacio for this left panel background with a subtle overlay for contrast */
-  background-image: url('FondoEspacio.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 /* legacy tab button styles removed — slides and texts are now inside the left panel */
 .ventana .rectangle-2 {
@@ -239,12 +234,8 @@
   background-color: rgba(11,61,145,0.6);
   border-radius: 20px;
   border: 4px solid #fc3d21;
-  /* Use the same FondoEspacio texture for the right card */
-  background-image: url('FondoEspacio.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
+  /* keep subtle overlay only; background image is rendered at the page level */
 .ventana .rectangle-2 #simulacion-container {
   position: absolute;
   inset: 0; /* fill the right card completely */
