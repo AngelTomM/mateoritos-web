@@ -14,9 +14,9 @@
 
     <div class="rectangle"></div>
 
-  <h1 class="titulo" id="page-title">Sobre Nosotros</h1>
-  <div class="team" id="team-name">Equipo Mateorito</div>
-  <div class="descripcion" id="team-desc">Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge</div>
+  <h1 class="titulo" id="page-title" data-i18n="page3.title">Sobre Nosotros</h1>
+  <div class="team" id="team-name" data-i18n="page3.team_name">Equipo Mateorito</div>
+  <div class="descripcion" id="team-desc" data-i18n="page3.team_description">Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis que participa en el NASA Space Apps Challenge</div>
 
     <!-- member ellipses (background images) -->
     <div class="ellipse mica" data-member="mica"></div>
@@ -37,18 +37,19 @@
     <div class="logo-unsl"></div>
     <div class="logo-fica"></div>
 
-    <div class="footer"> <div id="footer-text">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</div></div>
+  <div class="footer"> <div id="footer-text" data-i18n="page3.footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</div></div>
 
   <button id="back-btn" class="BotonVisualizarSimulacion" data-i18n="volver_inicio" onclick="window.location.href='../index.html'">Volver a inicio</button>
 
     <script src="../i18n/loader.js"></script>
     <script>
       // populate texts from i18n (lightweight: replace headings and names)
-      i18n.load().then(() => {
+      function updatePage3Texts() {
         const t = i18n.t;
-  document.getElementById('page-title').textContent = t('page3.title') || 'Sobre Nosotros';
-  document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateorito';
+        document.getElementById('page-title').textContent = t('page3.title') || 'Sobre Nosotros';
+        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateorito';
         document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description') || '';
+        document.getElementById('footer-text').textContent = t('page3.footer') || 'NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA';
 
         const members = t('page3.members') || [];
         // mapping by visual id order used in style_3.css
@@ -94,6 +95,15 @@
           const ell = document.querySelector('.ellipse.' + id);
           if(ell) ell.style.backgroundImage = `url('${filenameMap[id]}')`;
         });
+      }
+
+      i18n.load().then(() => {
+        updatePage3Texts();
+      });
+
+      // Detectar cambio de idioma y actualizar textos
+      window.addEventListener('languageChanged', () => {
+        updatePage3Texts();
       });
 
       document.getElementById('back-btn').addEventListener('click', () => {
