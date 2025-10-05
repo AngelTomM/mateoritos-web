@@ -1,71 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sobre Nosotros - Meteoritos Team</title>
-        <link rel="stylesheet" href="style_pag3.css" />
+    <meta name="description" content="Equipo Meteoritos - Estudiantes de Ingeniería Mecatrónica - NASA Space Apps Challenge" />
+    <title>Sobre Nosotros - Equipo Meteoritos</title>
+    <link rel="stylesheet" href="style_pag3.css" />
   </head>
   <body>
-        <section class="about-us-section">
-            <div class="container">
-                    <h1 class="main-title" id="page3-title">ABOUT US</h1>
-          <div class="divider"></div>
-
-          <div class="team-info">
-              <h2 class="team-name" id="page3-team-name">Meteoritos Team</h2>
-              <p class="team-description" id="page3-team-desc">
-                  A team made up of Mechatronic Engineering students from the National University of San Luis
-                  participating in the NASA Space Apps Challenge.
-              </p>
+    <main class="frame">
+      <article class="content-wrapper">
+        <header class="page-header">
+          <h1 class="page-title">SOBRE NOSOTROS</h1>
+          <div class="title-underline" role="presentation"></div>
+        </header>
+        <section class="team-section">
+          <h2 class="team-title">Equipo Meteoritos</h2>
+          <p class="team-description">
+            Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis, participando
+            en el NASA Space Apps Challenge.
+          </p>
+          <div class="team-members">
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.Tomas.jpg" alt="Centeno Angel Tomás" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Centeno Angel Tomás</h3>
+            </article>
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.mica.jpg" alt="Fránco Micaela" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Fránco Micaela</h3>
+            </article>
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.Simon.jpg" alt="Ávila Boeri Simón" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Ávila Boeri Simón</h3>
+            </article>
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.Joaquin.jpg" alt="Favier Zakowicz Joaquín" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Favier Zakowicz Joaquín</h3>
+            </article>
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.Malena.jpg" alt="Daniele Malena" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Daniele Malena</h3>
+            </article>
+            <article class="team-member">
+              <div class="member-avatar">
+                <img src="../IMG.Ignacio.jpg" alt="Andrade Ignacio Martin" class="avatar-image" />
+              </div>
+              <h3 class="member-name">Andrade Ignacio Martín</h3>
+            </article>
           </div>
-
-          <div class="team-members" id="page3-members">
+        </section>
+        <footer class="page-footer">
+          <div class="footer-logos">
+            <div class="logo-unsl">
+              <img src="../UNSL.png" alt="Universidad Nacional de San Luis" class="logo-image" />
+            </div>
+            <div class="logo-fica">
+              <img src="../SPACEAPPSCHALLENGE.png" alt="Space Apps Challenge" class="logo-image" />
+            </div>
           </div>
-      </div>
-
-            <div class="footer-info">
-            <div class="logos-container">
-                <img src="../UNSL.png" alt="Universidad Nacional de San Luis" class="university-logo">
-                <img src="../SPACEAPPSCHALLENGE.png" alt="Space Apps Challenge" class="fica-logo">
-            </div>
-                    <p class="challenge-footer" id="page3-footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
-            </div>
-    </section>
-        <script src="../i18n/loader.js"></script>
-        <script>
-            // Apply i18n content to page3
-            (async function(){
-                await i18n.load();
-                const d = i18n.t('page3');
-                document.getElementById('page3-title').textContent = d.title;
-                document.getElementById('page3-team-name').textContent = d.team_name;
-                document.getElementById('page3-team-desc').textContent = d.team_description;
-                const membersCont = document.getElementById('page3-members');
-                membersCont.innerHTML = '';
-                // Map images to members by matching known name tokens to the IMG files in repo root
-                function chooseImageFor(name){
-                    const n = name.toLowerCase();
-                    if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.jpg';
-                    if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.jpg';
-                    if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.jpg';
-                    if(n.includes('mica') || n.includes('fránco')) return '../IMG.mica.jpg';
-                    if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.jpg';
-                    if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.jpg';
-                    return '';
-                }
-
-                d.members.forEach((name) => {
-                    const imgSrc = chooseImageFor(name);
-                    const card = document.createElement('div');
-                    card.className = 'member-card';
-                    card.innerHTML = `<div class="member-photo-container"><img src="${imgSrc}" alt="Foto de ${name}" class="member-photo"></div><p class="member-name">${name}</p>`;
-                    membersCont.appendChild(card);
-                });
-                document.getElementById('page3-footer').textContent = d.footer;
-                // react to language changes in other tabs
-                window.addEventListener('storage', async(ev)=>{ if (ev.key === 'mateoritos_lang') { await i18n.load(); const d2=i18n.t('page3'); document.getElementById('page3-title').textContent=d2.title; document.getElementById('page3-team-name').textContent=d2.team_name; document.getElementById('page3-team-desc').textContent=d2.team_description; document.getElementById('page3-footer').textContent=d2.footer; } });
-            })();
-        </script>
+          <p class="footer-text">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
+        </footer>
+      </article>
+    </main>
   </body>
 </html>

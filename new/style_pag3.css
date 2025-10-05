@@ -1,144 +1,189 @@
-/* Estilos generales para la sección */
-.about-us-section {
-    background-color: #000033; /* Color de fondo oscuro (azul marino) */
-    background-image: url(''); /* Si tienes una imagen de fondo estrellado */
-    background-size: cover;
-    background-position: center;
-    color: #ffffff; /* Color de texto principal (blanco) */
-    padding: 40px 0; /* Espaciado superior e inferior */
-    font-family: Arial, sans-serif; /* Puedes cambiar la fuente si lo deseas */
-    position: relative;
+.frame {
+  background-color: #050612;
+  /* Use project-level FondoEspacio.png as background for consistent theme */
+  background-image: url("../FondoEspacio.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+.content-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  background: rgba(2,8,20,0.55); /* subtle overlay for readability */
+  padding: 30px;
+  border-radius: 12px;
 }
 
-/* Título principal "ABOUT US" */
-.main-title {
-    font-size: 48px;
-    font-weight: bold;
-    margin-bottom: 5px;
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Línea divisoria roja */
-.divider {
-    width: 100%; /* O el ancho que desees */
-    height: 4px;
-    background-color: #ff0000; /* Color rojo */
-    margin-bottom: 30px;
+.page-title {
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-/* Información del equipo */
-.team-name {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.title-underline {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ff0000 0%, #ff0000 50%, transparent 50%);
+}
+
+.team-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.team-title {
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
 }
 
 .team-description {
-    font-size: 18px;
-    margin-bottom: 50px;
-    line-height: 1.5;
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 900px;
 }
 
-/* Contenedor de los miembros del equipo (usa Flexbox para la disposición) */
 .team-members {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
-    justify-content: space-around; /* Distribuye el espacio entre y alrededor de los elementos */
-    gap: 30px 20px; /* Espacio entre las tarjetas */
-    margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 30px;
+  margin-top: 20px;
 }
 
-/* Tarjeta individual del miembro */
-.member-card {
-    text-align: center;
-    width: 150px; /* Ancho base para cada tarjeta */
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Contenedor de la foto para darle forma circular */
-.member-photo-container {
-    width: 150px; /* Diámetro del círculo */
-    height: 150px; /* Diámetro del círculo */
-    border-radius: 50%; /* Hace el contenedor circular */
-    overflow: hidden; /* Oculta partes de la imagen fuera del círculo */
-    margin: 0 auto 10px auto;
-    border: 3px solid #ffffff; /* Borde blanco opcional alrededor del círculo */
+.member-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.9);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
 }
 
-/* Estilos de la imagen dentro del círculo */
-.member-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
-    display: block;
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Nombre del miembro */
 .member-name {
-    font-size: 16px;
-    font-weight: bold;
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
 }
 
-/* --- Estilos para la sección de Logos y Footer --- */
-.footer-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para la parte inferior */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.logos-container {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+.footer-logos {
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
 
-.university-logo, .fica-logo {
-    height: 40px; /* Ajusta el tamaño de los logos */
-    width: auto;
+.logo-unsl,
+.logo-fica {
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 
-.challenge-footer {
-    font-size: 12px;
-    color: #aaaaaa;
-    text-transform: uppercase;
+.logo-image {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
-/* Media Query para hacer el diseño responsivo en pantallas más pequeñas */
+.footer-text {
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .team-members {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
-    .main-title {
-        font-size: 36px;
-    }
+  .page-title {
+    font-size: 32px;
+  }
 
-    .team-members {
-        justify-content: center; /* Centra los miembros en pantallas pequeñas */
-    }
+  .team-title {
+    font-size: 22px;
+  }
 
-    .member-card {
-        width: 120px;
-    }
+  .team-description {
+    font-size: 15px;
+  }
 
-    .member-photo-container {
-        width: 120px;
-        height: 120px;
-    }
+  .team-members {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 
-    .footer-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
+  .member-avatar {
+    width: 140px;
+    height: 140px;
+  }
 
-    .challenge-footer {
-        font-size: 10px;
-    }
+  .member-name {
+    font-size: 16px;
+  }
+
+  .page-footer {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer-text {
+    text-align: center;
+  }
 }
