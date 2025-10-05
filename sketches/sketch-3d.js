@@ -20,6 +20,9 @@ function setup() {
   const ch = Math.max(200, Math.floor(rect.height));
   const cnv = createCanvas(cw, ch, WEBGL);
   cnv.parent(simContainer);
+  // ensure the canvas is actually mounted and resized even if the container
+  // hasn't been laid out yet (some browsers/layouts report 0x0 initially)
+  ensureCanvasMounted(cnv, simContainer);
 
   // Sliders (placed inside left card)
   aSlider = createSlider(0.00001, 0.02, 0.002, 0.000001);
@@ -204,3 +207,24 @@ function applySlidePreset(slideNumber) {
 
 // expose for manual use
 window.applySlidePreset = applySlidePreset;
+
+// Helper: retry parenting + resize until container has a non-zero size (defensive)
+function ensureCanvasMounted(cnv, container) {
+  let tries = 0;
+  const maxTries = 20;
+  const id = setInterval(() => {
+    tries++;
+    const rect = container.getBoundingClientRect();
+    if (rect.width > 10 && rect.height > 10) {
+      try {
+        cnv.parent(container);
+        resizeCanvas(Math.max(200, Math.floor(rect.width)), Math.max(200, Math.floor(rect.height)));
+      } catch (e) {
+        // ignore
+      }
+      clearInterval(id);
+    } else if (tries >= maxTries) {
+      clearInterval(id);
+    }
+  }, 150);
+}
