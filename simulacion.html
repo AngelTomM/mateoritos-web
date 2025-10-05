@@ -30,6 +30,21 @@
       .rectangle-2 { z-index: 2; }
       .space-page-content { margin-top: 48px; padding: 32px 20px 80px; position: relative; z-index: 3; }
     </style>
+    <!-- MathJax: configuration (enable automatic numbering for display equations) -->
+    <script>
+      window.MathJax = {
+        tex: {
+          packages: {'[+]': ['ams']},
+          tags: 'all' // number all displayed equations
+        },
+        chtml: {
+          scale: 1
+        },
+        options: {
+          skipHtmlTags: ['script','noscript','style','textarea','pre']
+        }
+      };
+    </script>
     <!-- MathJax: render LaTeX math expressions on this page -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
