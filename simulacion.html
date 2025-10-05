@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <!-- Styles for the long informational section from new/ -->
     <link rel="stylesheet" href="new/style_new2.css" />
+  <link rel="stylesheet" href="new/style_new3.css" />
     <style>
       /* Make sure html/body occupy full height and reset margins */
       html, body { height: 100%; margin: 0; padding: 0; }
@@ -428,45 +429,64 @@
     </table>
   </div>
 
-  <section class="nasa-criteria">
-    <p>La NASA considera como asteroides <strong>PHA (Potencialmente Hazardous Asteroids)</strong> cuando cumplen:</p>
-    <ol>
-      <li>$H \le 22$</li>
-      <li>$\text{Moid} < 0.05 \text{AU}$</li>
-    </ol>
-  </section>
+  <!-- Replaced NASA criteria + formulas with corrected markup from new/index_new3.html -->
+  <section class="nasa-info-section">
+    <h3 class="section-title">La NASA considera como asteroides PHA (Potentially Hazardous Asteroids) cuando cumplen:</h3>
+    
+    <div class="pha-criteria-list">
+        <span class="criterion">1) $H \le 22$</span>
+        <span class="criterion">2) $\text{Moid} < 0.05 \text{AU}$</span>
+    </div>
 
-  <section class="formulas">
-    <h2>Fórmulas que determinan los parámetros mencionados:</h2>
-        
+    <h3 class="section-title formula-heading">Fórmulas que determinan los parámetros mencionados:</h3>
+    
     <div class="formula-group">
-      <span class="formula-title">Kepler</span>
-      <div class="formula-math">
-                \begin{equation}\label{eq:kepler}
-                  \mu = GM = \frac{4\pi^{2} a^{3}}{T^{2}}
-                \end{equation}
-        <div class="formula-note">Con a [km] y T [s]</div>
-      </div>
+        <span class="formula-label">Kepler</span>
+        <div class="formula-math">
+            <span class="mu-notation">&mu; = GM</span> 
+            = 
+            <span class="fraction-display large-fraction">
+                <span class="numerator">4&middot;&pi;<sup>2</sup> &middot; a<sup>3</sup></span>
+                <span class="denominator">T<sup>2</sup></span>
+            </span>
+            <span class="formula-note">Con a [Km] y T [s]</span>
+        </div>
     </div>
 
     <div class="formula-group">
-      <span class="formula-title">Velocidad del asteroide</span>
-      <div class="formula-math">
-                \begin{equation}\label{eq:velocity}
-                  v = \sqrt{\mu\left(\frac{2}{r} - \frac{1}{a}\right)}
-                \end{equation}
-      </div>
+        <span class="formula-label">Velocidad del asteroide</span>
+        <div class="formula-math">
+            <span class="v-notation">v</span>
+            = 
+            <span class="sqrt-display">&radic;</span>
+            <span class="sqrt-content velocity-content">
+                <span class="mu-notation">&mu;</span> 
+                <span class="parentheses">(</span>
+                    <span class="fraction-display small-fraction">
+                        <span class="numerator">2</span>
+                        <span class="denominator">q</span>
+                    </span>
+                    -
+                    <span class="fraction-display small-fraction">
+                        <span class="numerator">1</span>
+                        <span class="denominator">a</span>
+                    </span>
+                <span class="parentheses">)</span>
+            </span>
+        </div>
     </div>
 
     <div class="formula-group">
-      <span class="formula-title">Distancia con el planeta Tierra</span>
-      <div class="formula-math">
-                \begin{equation}\label{eq:moid}
-                  \mathrm{MOID} = \min_{\nu,\mu} \left\|\mathbf{r}_1(\nu) - \mathbf{r}_2(\mu)\right\|
-                \end{equation}
-      </div>
+        <span class="formula-label">Distancia con el planeta Tierra</span>
+        <div class="formula-math">
+            <span class="moid-notation">Moid</span>
+            = 
+            <span class="min-notation">min</span><sub>&mu;, &nu;</sub>
+            <span>||<span class="vector-r">r</span><sub>1</sub>(<span class="vector-r">v</span>) - <span class="vector-r">r</span><sub>2</sub>(<span class="vector-r">v</span>)||</span>
+        </div>
     </div>
-  </section>
+
+</section>
 
   <footer class="footer-note">
     <p>NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
