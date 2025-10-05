@@ -237,12 +237,9 @@
 }
 .ventana .rectangle-2 #simulacion-container {
   position: absolute;
-  top: 60px; /* leave space for slides at top */
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0; /* fill the right card completely */
   width: 100%;
-  height: calc(100% - 60px);
+  height: 100%;
 }
 
 /* Slide panel now sits at the top-right inside the right card */

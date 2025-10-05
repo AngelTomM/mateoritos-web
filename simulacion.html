@@ -15,9 +15,9 @@
         <div class="left-content" style="position:relative;padding:20px;display:flex;flex-direction:column;gap:12px;">
           <!-- Slides moved here -->
           <div id="slides-panel" style="display:flex;flex-direction:column;gap:8px;">
-            <button class="slide-btn" data-slide="1">Slide 1</button>
-            <button class="slide-btn" data-slide="2">Slide 2</button>
-            <button class="slide-btn" data-slide="3">Slide 3</button>
+            <button class="slide-btn" data-preset="1">Asteroide 1</button>
+            <button class="slide-btn" data-preset="2">Asteroide 2</button>
+            <button class="slide-btn" data-preset="3">Asteroide 3</button>
           </div>
           <!-- Controls: native HTML ranges to replace p5 sliders -->
           <div id="controls" style="display:flex;flex-direction:column;gap:8px; margin-top:8px;">
@@ -57,10 +57,24 @@
       document.addEventListener('DOMContentLoaded', () => {
         const panel = document.getElementById('slides-panel');
         if (!panel) return;
+        // preset mapping
+        const presets = {
+          1: { a: 0.01, e: 0.2, i: 2.5 },
+          2: { a: 0.005, e: 0.7, i: 10.0 },
+          3: { a: 0.002, e: 0.86, i: 4.1 }
+        };
+
         panel.querySelectorAll('.slide-btn').forEach(btn => {
           btn.addEventListener('click', () => {
-            const s = Number(btn.getAttribute('data-slide')) || 1;
-            window.currentSlide = s;
+            const p = Number(btn.getAttribute('data-preset')) || 1;
+            const preset = presets[p] || presets[1];
+            // apply to ranges
+            const aRange = document.getElementById('a-range');
+            const eRange = document.getElementById('e-range');
+            const iRange = document.getElementById('i-range');
+            if (aRange) { aRange.value = preset.a; aRange.dispatchEvent(new Event('input')); }
+            if (eRange) { eRange.value = preset.e; eRange.dispatchEvent(new Event('input')); }
+            if (iRange) { iRange.value = preset.i; iRange.dispatchEvent(new Event('input')); }
             // visual feedback
             panel.querySelectorAll('.slide-btn').forEach(b => b.style.opacity = '0.6');
             btn.style.opacity = '1';
