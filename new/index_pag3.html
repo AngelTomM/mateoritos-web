@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Equipo Meteoritos - Sobre Nosotros" />
-    <title>Sobre Nosotros - Equipo Meteoritos</title>
-    <link rel="stylesheet" href="style_pagina3.css" />
+    <meta name="description" content="Equipo Mateoritos - Sobre Nosotros" />
+    <title>SOBRE NOSOTROS - Equipo Mateoritos</title>
+    <link rel="stylesheet" href="style_3.css" />
   </head>
   <body>
     <div class="background"></div>
@@ -27,46 +27,32 @@
     <div class="ellipse malena" data-member="malena"></div>
 
     <!-- names positioned under ellipses -->
-    <div class="nombre mica" id="name-mica">Mica</div>
-    <div class="nombre simon" id="name-simon">Simon</div>
-    <div class="nombre malena" id="name-malena">Malena</div>
-    <div class="nombre ignacio" id="name-ignacio">Ignacio</div>
-    <div class="nombre joaquin" id="name-joaquin">Joaquin</div>
-    <div class="nombre tomas" id="name-tomas">Tomas</div>
+    <div class="nombre mica" id="name-mica">Franco Micaela</div>
+    <div class="nombre simon" id="name-simon">Avila Boeri Simón</div>
+    <div class="nombre malena" id="name-malena">Daniele Malena</div>
+    <div class="nombre ignacio" id="name-ignacio">Andrade Ignacio Martin</div>
+    <div class="nombre joaquin" id="name-joaquin">Favier Zakowicz Joaquín</div>
+    <div class="nombre tomas" id="name-tomas">Centeno Angel Tomás</div>
 
     <div class="logo-unsl"></div>
     <div class="logo-fica"></div>
 
-    <div class="footer"> <div id="footer-text">Universidad Nacional de San Luis - FICA</div></div>
+    <div class="footer"> <div id="footer-text">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</div></div>
 
     <button id="back-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Volver al inicio</button>
 
     <script src="../i18n/loader.js"></script>
     <script>
-      // populate texts from i18n
+      // populate texts from i18n (lightweight: replace headings and names)
       i18n.load().then(() => {
         const t = i18n.t;
-        document.getElementById('page-title').textContent = t('page3.title');
-        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || t('page3.teamName');
-        document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description');
+        document.getElementById('page-title').textContent = t('page3.title') || 'SOBRE NOSOTROS';
+        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateoritos';
+        document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description') || '';
 
         const members = t('page3.members') || [];
-
-        // Desired visual order and id mapping (matches index_3.html placement)
+        // mapping by visual id order used in style_3.css
         const idOrder = ['mica','simon','malena','ignacio','joaquin','tomas'];
-        // tokens to identify names in i18n (diacritics-insensitive)
-        const surnameTokens = {
-          mica: ['Micaela','Franco'],
-          simon: ['Avila','Boeri','Simón'],
-          malena: ['Daniele','Malena'],
-          ignacio: ['Andrade','Ignacio','Martin'],
-          joaquin: ['Favier','Zakowicz','Joaquin'],
-          tomas: ['Centeno','Martin','Angel','Tomas']
-        };
-
-        const normalize = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
-        const used = new Array(members.length).fill(false);
-
         const filenameMap = {
           mica: '../IMG.mica.png',
           tomas: '../IMG.Tomas.png',
@@ -76,26 +62,12 @@
           malena: '../IMG.Malena.png'
         };
 
-        idOrder.forEach(id => {
-          // find a member in the i18n list that matches expected tokens
-          let foundIdx = -1;
-          for(let i=0;i<members.length;i++){
-            if(used[i]) continue;
-            const norm = normalize(members[i]);
-            if(surnameTokens[id].some(tok => norm.includes(tok))) { foundIdx = i; break; }
-          }
-          if(foundIdx === -1){
-            // fallback: first unused
-            foundIdx = members.findIndex((m,idx)=>!used[idx]);
-          }
-          if(foundIdx !== -1){
-            used[foundIdx] = true;
-            const fullName = members[foundIdx];
-            const nameEl = document.getElementById('name-' + id);
-            if(nameEl) nameEl.textContent = fullName; // show full name as given in i18n
-          }
-          const ellipse = document.querySelector('.ellipse.' + id);
-          if(ellipse){ ellipse.style.backgroundImage = `url('${filenameMap[id] || `../IMG.${id}.png`}')`; }
+        idOrder.forEach((id, idx) => {
+          const fullName = members[idx] || document.getElementById('name-' + id).textContent;
+          const nameEl = document.getElementById('name-' + id);
+          if(nameEl) nameEl.textContent = fullName;
+          const ell = document.querySelector('.ellipse.' + id);
+          if(ell) ell.style.backgroundImage = `url('${filenameMap[id]}')`;
         });
       });
 
@@ -103,101 +75,7 @@
         window.location.href = '../index_new.html';
       });
     </script>
-            i++;
-            if(i < basePaths.length){
-              img.src = basePaths[i];
-            } else {
-              // final fallback: remove broken image or set placeholder
-              img.onerror = null;
-              img.src = '';
-              img.style.display = 'none';
-            }
-          };
-          img.src = basePaths[0];
-          return img;
-        }
-
-        (d.members||[]).forEach(name => {
-          const candidateBase = (function(){
-            // build candidate filenames based on common patterns
-            // prefer the repository naming: IMG.Name.jpg
-            const tokens = name.split(/\s+/).filter(Boolean);
-            // try variants: Last token or First token depending
-            const prefer = tokens.length ? tokens[tokens.length-1] : name;
-            // normalize: remove diacritics for one variant
-            const norm = prefer.normalize('NFD').replace(/\p{Diacritic}/gu, '');
-            const variants = [prefer, norm, prefer.toLowerCase(), norm.toLowerCase(), prefer.toUpperCase()];
-            const bases = [];
-            variants.forEach(v => {
-              if(!v) return;
-              bases.push(`../IMG.${v}.png`);
-            });
-            // explicit PNG names
-            bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
-            // remove duplicates
-            return Array.from(new Set(bases));
-          })();
-
-          const photoDiv = document.createElement('div');
-          photoDiv.className = 'member-photo';
-          const imgEl = makeImgWithFallback(candidateBase);
-          imgEl.alt = `Foto de ${name}`;
-          photoDiv.appendChild(imgEl);
-
-          const nameP = document.createElement('p');
-          nameP.className = 'member-name';
-          nameP.textContent = name;
-
-          const card = document.createElement('div');
-          card.className = 'member-card';
-          card.appendChild(photoDiv);
-          card.appendChild(nameP);
-          membersCont.appendChild(card);
-        });
-
-        window.addEventListener('storage', async(ev)=>{
-          if(ev.key === 'mateoritos_lang'){
-            await i18n.load();
-            const d2 = i18n.t('page3');
-            document.getElementById('page3-title').textContent = d2.title;
-            document.getElementById('page3-team-name').textContent = d2.team_name;
-            document.getElementById('page3-team-desc').textContent = d2.team_description;
-            document.getElementById('page3-footer').textContent = d2.footer;
-            const root2 = i18n.t();
-            const backText2 = (root2 && root2.back) ? root2.back : 'Volver al inicio';
-            const backBtn2 = document.getElementById('page3-back-btn'); if (backBtn2) backBtn2.textContent = backText2;
-            membersCont.innerHTML = '';
-            (d2.members||[]).forEach(name => {
-              const candidateBase = (function(){
-                const tokens = name.split(/\s+/).filter(Boolean);
-                const prefer = tokens.length ? tokens[tokens.length-1] : name;
-                const norm = prefer.normalize('NFD').replace(/\p{Diacritic}/gu, '');
-                const variants = [prefer, norm, prefer.toLowerCase(), norm.toLowerCase(), prefer.toUpperCase()];
-                const bases = [];
-                variants.forEach(v => {
-                  if(!v) return;
-                  bases.push(`../IMG.${v}.png`);
-                });
-                bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
-                return Array.from(new Set(bases));
-              })();
-              const photoDiv = document.createElement('div');
-              photoDiv.className = 'member-photo';
-              const imgEl = makeImgWithFallback(candidateBase);
-              imgEl.alt = `Foto de ${name}`;
-              photoDiv.appendChild(imgEl);
-              const nameP = document.createElement('p');
-              nameP.className = 'member-name';
-              nameP.textContent = name;
-              const card = document.createElement('div');
-              card.className = 'member-card';
-              card.appendChild(photoDiv);
-              card.appendChild(nameP);
-              membersCont.appendChild(card);
-            });
-          }
-        });
-      })();
-    </script>
+  </body>
+</html>
   </body>
 </html>
