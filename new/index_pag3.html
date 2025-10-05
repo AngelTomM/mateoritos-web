@@ -24,6 +24,12 @@
         <!-- member cards injected by i18n script -->
       </div>
 
+      <div style="margin-top:16px;">
+        <a href="../index.html" class="back-btn" style="display:inline-block;text-decoration:none;">
+          <button id="page3-back-btn" style="padding:10px 14px;border-radius:8px;border:none;background:#fc3d21;color:white;cursor:pointer;">Volver al inicio</button>
+        </a>
+      </div>
+
       <div class="footer-logos">
         <p class="footer-note" id="page3-footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
       </div>
@@ -34,11 +40,15 @@
       (async function(){
         await i18n.load();
         const d = i18n.t('page3');
-        // fill texts
-        document.getElementById('page3-title').textContent = d.title || document.getElementById('page3-title').textContent;
-        document.getElementById('page3-team-name').textContent = d.team_name;
-        document.getElementById('page3-team-desc').textContent = d.team_description;
-        document.getElementById('page3-footer').textContent = d.footer;
+  // fill texts
+  document.getElementById('page3-title').textContent = d.title || document.getElementById('page3-title').textContent;
+  document.getElementById('page3-team-name').textContent = d.team_name;
+  document.getElementById('page3-team-desc').textContent = d.team_description;
+  document.getElementById('page3-footer').textContent = d.footer;
+  // back button text comes from root i18n 'back'
+  const root = i18n.t();
+  const backText = (root && root.back) ? root.back : 'Volver al inicio';
+  const backBtn = document.getElementById('page3-back-btn'); if (backBtn) backBtn.textContent = backText;
 
         const membersCont = document.getElementById('page3-members');
         membersCont.innerHTML = '';
@@ -70,6 +80,9 @@
             document.getElementById('page3-team-name').textContent = d2.team_name;
             document.getElementById('page3-team-desc').textContent = d2.team_description;
             document.getElementById('page3-footer').textContent = d2.footer;
+            const root2 = i18n.t();
+            const backText2 = (root2 && root2.back) ? root2.back : 'Volver al inicio';
+            const backBtn2 = document.getElementById('page3-back-btn'); if (backBtn2) backBtn2.textContent = backText2;
             membersCont.innerHTML = '';
             (d2.members||[]).forEach(name => {
               const img = chooseImageFor(name);
