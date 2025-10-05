@@ -17,9 +17,9 @@ body {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background: #0B3D91;
-  z-index: 0;
-}
+    width: 229px;
+    height: 40px;
+    font-size: 25px;
 
 .meteoro-top {
   position: absolute;
