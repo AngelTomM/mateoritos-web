@@ -200,7 +200,8 @@
 
 /* Minimal styles for simulacion page (ensures canvas container is visible) */
 .ventana {
-  background-color: #0b3d91;
+  /* Make the page-level background (FondoEspacio) visible by keeping the container transparent */
+  background-color: transparent;
   width: 100%;
   min-width: 1440px;
   min-height: 1024px;
