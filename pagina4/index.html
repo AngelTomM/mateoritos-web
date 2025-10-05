@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Asteroids Info</title>
-  <link rel="stylesheet" href="./estilos4.css">
+  <title data-i18n="page4.title">Asteroids Info</title>
+  <link rel="stylesheet" href="estilos4.css">
   <link href="https://fonts.googleapis.com/css?family=Bai+Jamjuree:700&display=swap" rel="stylesheet">
+  <script src="../i18n/loader.js"></script>
 </head>
 <body>
   <div class="fondo"></div>
@@ -18,35 +19,65 @@
 
   <button class="BotonVisualizarSimulacion" style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:200;min-width:160px;max-width:90vw;width:229px;height:40px;font-size:25px;" onclick="window.location.href='../index.html'">Volver a inicio</button>
 
-  <div class="titulo-principal">What is an asteroid?</div>
-  <div class="texto-asteroide">
+
+  <div class="titulo-principal" id="titulo-principal" data-i18n="page4.titulo">What is an asteroid?</div>
+  <div class="texto-asteroide" id="texto-asteroide" data-i18n="page4.texto_asteroide">
     An asteroid is a rocky or metallic body smaller than a planet, which orbits around the Sun and is part of the primitive remains of the formation process of the Solar System. Most are located in the asteroid belt between Mars and Jupiter
   </div>
 
-  <div class="titulo-seccion titulo-sizes">Sizes And shapes</div>
-  <div class="texto-sizes">
+  <div class="titulo-seccion titulo-sizes" id="titulo-sizes" data-i18n="page4.titulo_sizes">Sizes And shapes</div>
+  <div class="texto-sizes" id="texto-sizes" data-i18n="page4.texto_sizes">
     They range from a few meters to hundreds of kilometers in diameter (Ceres, the largest one, is about 940 km). They usually have irregular shapes and cratered surfaces, as they don’t have enough gravity to take on a spherical shape like planets do.
   </div>
 
-  <div class="titulo-seccion titulo-orbits">Orbits</div>
-  <div class="texto-orbits">
+  <div class="titulo-seccion titulo-orbits" id="titulo-orbits" data-i18n="page4.titulo_orbits">Orbits</div>
+  <div class="texto-orbits" id="texto-orbits" data-i18n="page4.texto_orbits">
     The orbits of asteroids are elliptical and irregular, and they can have very different inclinations and eccentricities. Some group together in families with similar paths, while others are deflected by the gravity of planets, altering their course or even leaving their original region.
   </div>
 
-  <div class="titulo-seccion titulo-risk">Risk and Effects</div>
-  <div class="texto-risk">
+  <div class="titulo-seccion titulo-risk" id="titulo-risk" data-i18n="page4.titulo_risk">Risk and Effects</div>
+  <div class="texto-risk" id="texto-risk" data-i18n="page4.texto_risk">
     Asteroids close to Earth represent a potential risk both for the possibility of impact and for the gravitational effects they can generate when passing at a short distance. These bodies can slightly alter the orbits of satellites or even influence the trajectory of other space objects. In case of collision with the Earth, the consequences will depend on the size; speed and composition of the asteroid, ranging from the formation of craters to causing global disasters. Among the most significant effects of an impact are shock waves with great over-pressure, tsunamis, earthquakes, widespread fires and alterations in the atmosphere that could affect the planet's climate.
   </div>
 
-  <div class="titulo-seccion titulo-observation">Observation and Monitoring</div>
-  <div class="texto-observation">
+  <div class="titulo-seccion titulo-observation" id="titulo-observation" data-i18n="page4.titulo_observation">Observation and Monitoring</div>
+  <div class="texto-observation" id="texto-observation" data-i18n="page4.texto_observation">
     Organizations such as NASA, ESA, and JPL maintain up-to-date catalogs of Near-Earth Asteroids (NEAs). Their detection and tracking are carried out using ground-based and space telescopes capable of estimating their orbits, sizes, and future trajectories. The level of impact risk is assessed using the Turin Scale and the Palermo Scale, which help classify the degree of hazard and prioritize monitoring and prevention efforts.
   </div>
 
-  <div class="creditos">
+  <div class="creditos" id="creditos" data-i18n="page4.creditos">
     Design and development by the Mateoritos team – NASA Space Apps Challenge – San Luis, Argentina.
   </div>
 
-  <button class="BotonVisualizarSimulacion" style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:200;min-width:160px;max-width:90vw;width:229px;height:40px;font-size:25px;" onclick="window.location.href='../index.html'">Volver a inicio</button>
+  <button class="BotonVisualizarSimulacion" style="position:fixed;left:50%;bottom:40px;transform:translateX(-50%);z-index:200;min-width:160px;max-width:90vw;width:229px;height:40px;font-size:25px;" onclick="window.location.href='../index.html'" data-i18n="volver_inicio">Volver a inicio</button>
+
+  <script>
+    function updatePage4Texts() {
+      const t = i18n.t;
+      document.title = t('page4.title') || 'Asteroids Info';
+      document.getElementById('titulo-principal').innerText = t('page4.titulo') || 'What is an asteroid?';
+      document.getElementById('texto-asteroide').innerText = t('page4.texto_asteroide') || '';
+      document.getElementById('titulo-sizes').innerText = t('page4.titulo_sizes') || 'Sizes And shapes';
+      document.getElementById('texto-sizes').innerText = t('page4.texto_sizes') || '';
+      document.getElementById('titulo-orbits').innerText = t('page4.titulo_orbits') || 'Orbits';
+      document.getElementById('texto-orbits').innerText = t('page4.texto_orbits') || '';
+      document.getElementById('titulo-risk').innerText = t('page4.titulo_risk') || 'Risk and Effects';
+      document.getElementById('texto-risk').innerText = t('page4.texto_risk') || '';
+      document.getElementById('titulo-observation').innerText = t('page4.titulo_observation') || 'Observation and Monitoring';
+      document.getElementById('texto-observation').innerText = t('page4.texto_observation') || '';
+      document.getElementById('creditos').innerText = t('page4.creditos') || '';
+      const volverBtn = document.querySelector('[data-i18n="volver_inicio"]');
+      if (volverBtn) volverBtn.innerText = t('volver_inicio') || 'Volver a inicio';
+    }
+    i18n.load().then(updatePage4Texts);
+    window.addEventListener('languageChanged', () => {
+      i18n.load().then(updatePage4Texts);
+    });
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'mateoritos_lang_event') {
+        i18n.load().then(updatePage4Texts);
+      }
+    });
+  </script>
 </body>
 </html>
