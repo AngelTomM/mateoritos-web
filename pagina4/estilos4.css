@@ -1,0 +1,250 @@
+/* Copia exacta de estilos4.css para página 4 */
+body {
+  position: relative;
+  width: 1440px;
+  height: 2560px;
+  background: #0B3D91;
+  background:url('FondoPag3.png');
+  margin: 0;
+  font-family: 'Bai Jamjuree', sans-serif;
+  overflow-x: hidden;
+}
+
+.fondo {
+  position: absolute;
+  width: 1440px;
+  height: 2560px;
+  left: 0;
+  top: 0;
+  background: url('FondoPag3.png');
+  z-index: 0;
+}
+
+.rect-rojo {
+  position: absolute;
+  width: 1440px;
+  height: 5px;
+  left: 0;
+  top: 253px;
+  background: #FC3D21;
+  transform: matrix(1, 0, 0, -1, 0, 0);
+  z-index: 1;
+}
+
+.logo-mateoritos {
+  position: absolute;
+  width: 135px;
+  height: 135px;
+  left: 1072px;
+  top: 2384px;
+  background: url('Logo_Mateoritos.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.logo-nasa {
+  position: absolute;
+  width: 126px;
+  height: 103px;
+  left: 1306px;
+  top: 2403px;
+  background: url('NASA.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.logo-spaceapps {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  left: 1178px;
+  top: 2390px;
+  background: url('SPACE_APPS_CHALLENGE.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.meteoritos-fondo {
+  position: absolute;
+  width: 1440px;
+  height: 295px;
+  left: 0;
+  top: 567px;
+  background: url('Meteoritosfondo.png');
+  background-size: cover;
+  z-index: 1;
+}
+
+.satelite {
+  position: absolute;
+  width: 265.53px;
+  height: 398.29px;
+  left: 825px;
+  top: 2031px;
+  background: url('satelite.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-20.59deg);
+  z-index: 2;
+}
+
+.telescopio {
+  position: absolute;
+  width: 186.14px;
+  height: 279.21px;
+  left: 278px;
+  top: 2124px;
+  background: url('Telescopio.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotate(-4.9deg);
+  z-index: 2;
+}
+
+.titulo-principal {
+  position: absolute;
+  width: 1134px;
+  height: 166px;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.texto-asteroide {
+  position: absolute;
+  width: 1270px;
+  height: 161px;
+  left: calc(50% - 1270px/2 - 6px);
+  top: 332px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: justify;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.titulo-seccion {
+  position: absolute;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 80px;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.titulo-sizes {
+  width: 1115px;
+  height: 65px;
+  left: 79px;
+  top: 567px;
+}
+
+.titulo-orbits {
+  width: 1125px;
+  height: 60px;
+  left: 79px;
+  top: 913px;
+}
+
+.titulo-risk {
+  width: 1125px;
+  height: 64px;
+  left: 79px;
+  top: 1248px;
+}
+
+.titulo-observation {
+  width: 1134px;
+  height: 65px;
+  left: 79px;
+  top: 1779px;
+}
+
+.texto-sizes {
+  position: absolute;
+  width: 1270px;
+  height: 171px;
+  left: 79px;
+  top: 649px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: justify;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.texto-orbits {
+  position: absolute;
+  width: 1261px;
+  height: 165px;
+  left: 79px;
+  top: 1006px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: justify;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.texto-risk {
+  position: absolute;
+  width: 1270px;
+  height: 366px;
+  left: 79px;
+  top: 1353px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: justify;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.texto-observation {
+  position: absolute;
+  width: 1282px;
+  height: 239px;
+  left: 79px;
+  top: 1885px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 38px;
+  text-align: justify;
+  color: #FFFFFF;
+  z-index: 3;
+}
+
+.creditos {
+  position: absolute;
+  width: 1009px;
+  height: 20px;
+  left: 27px;
+  top: 2486px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  z-index: 3;
+}
