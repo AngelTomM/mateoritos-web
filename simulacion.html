@@ -224,6 +224,120 @@
         if (iRange) iRange.addEventListener('input', updateI); updateI();
       });
     </script>
+    <script>
+      // i18n: extend language toggle to this page by reading localStorage 'mateoritos_lang'
+      (function(){
+        const texts = {
+          es: {
+            title: 'SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES',
+            slide1: 'Asteroide 1',
+            slide2: 'Asteroide 2',
+            slide3: 'Asteroide 3',
+            save_title: 'Guardar parámetros',
+            reset: 'Restaurar presets por defecto',
+            a_label: 'a (UA)',
+            e_label: 'e (excentricidad)',
+            i_label: 'i (°)',
+            back: 'Volver al inicio',
+            recommendation_h2: 'Recomendación:',
+            recommendation_p: 'Simule la trayectoria de los asteroides a continuación para visualizar su trayectoria.',
+            params_h1: 'Parámetros de asteroides PHA de la NASA',
+            table: [
+              'Asteroide','H=Brillo','a=Semieje Mayor (UA)','q=Perihelio (UA)','Q=Afelio (UA)','e=Excentricidad','i=Inclinación Orbital con respecto a la eclíptica (°)','moid=Distancia Mínima de Intersección Orbital con la Tierra (UA)','Período (años)'
+            ],
+            nasa_criteria_p: 'La NASA considera como asteroides <strong>PHA (Potencialmente Hazardous Asteroids)</strong> cuando cumplen:',
+            formulas_h2: 'Fórmulas que determinan los parámetros mencionados:',
+            formula_kepler: 'Kepler',
+            formula_velocity: 'Velocidad del asteroide',
+            formula_distance: 'Distancia con el planeta Tierra'
+          },
+          en: {
+            title: 'TRAJECTORY SIMULATION: <br />ORBITAL BEHAVIOR OF ASTEROIDS',
+            slide1: 'Asteroid 1',
+            slide2: 'Asteroid 2',
+            slide3: 'Asteroid 3',
+            save_title: 'Save parameters',
+            reset: 'Restore default presets',
+            a_label: 'a (AU)',
+            e_label: 'e (eccentricity)',
+            i_label: 'i (°)',
+            back: 'Back to home',
+            recommendation_h2: 'Recommendation:',
+            recommendation_p: 'Simulate the asteroids trajectory below to visualize their paths.',
+            params_h1: "PHA asteroid parameters from NASA",
+            table: [
+              'Asteroid','H=Absolute magnitude','a=Semi-major axis (AU)','q=Perihelion (AU)','Q=Aphelion (AU)','e=Eccentricity','i=Orbital inclination to the ecliptic (°)','moid=Minimum Orbit Intersection Distance with Earth (AU)','Period (years)'
+            ],
+            nasa_criteria_p: 'NASA considers asteroids <strong>PHA (Potentially Hazardous Asteroids)</strong> when they meet:',
+            formulas_h2: 'Formulas that determine the mentioned parameters:',
+            formula_kepler: 'Kepler',
+            formula_velocity: 'Asteroid velocity',
+            formula_distance: 'Distance to planet Earth'
+          }
+        };
+
+        function applyLang(lang){
+          const t = texts[lang] || texts.es;
+          // Title
+          const title = document.querySelector('.SIMULACION-DE'); if (title) title.innerHTML = t.title;
+          // Slide buttons
+          const slides = document.querySelectorAll('#slides-panel .slide-btn');
+          if (slides && slides.length >= 3) {
+            slides[0].textContent = t.slide1;
+            slides[1].textContent = t.slide2;
+            slides[2].textContent = t.slide3;
+          }
+          // Save buttons title
+          document.querySelectorAll('#slides-panel .save-btn').forEach(b => { b.title = t.save_title; });
+          // Reset button
+          const resetBtn = document.getElementById('reset-presets'); if (resetBtn) resetBtn.textContent = t.reset;
+          // Labels for ranges - they are text nodes inside label elements
+          const labels = document.querySelectorAll('#controls label');
+          if (labels && labels.length >= 3) {
+            // set the first child text node value for each label
+            const setLabelText = (labelEl, text) => {
+              for (let i=0;i<labelEl.childNodes.length;i++){
+                const n = labelEl.childNodes[i];
+                if (n.nodeType === Node.TEXT_NODE) { n.nodeValue = text + ' '; break; }
+              }
+            };
+            setLabelText(labels[0], t.a_label);
+            setLabelText(labels[1], t.e_label);
+            setLabelText(labels[2], t.i_label);
+          }
+          // Back button
+          const backBtn = document.querySelector('.back-btn button'); if (backBtn) backBtn.textContent = t.back;
+          // Informational header and paragraph
+          const recH2 = document.querySelector('.recommendation-section h2'); if (recH2) recH2.textContent = t.recommendation_h2;
+          const recP = document.querySelector('.recommendation-section p'); if (recP) recP.textContent = t.recommendation_p;
+          const paramsH1 = document.querySelector('.recommendation-section h1'); if (paramsH1) paramsH1.textContent = t.params_h1;
+          // Table headers
+          const ths = document.querySelectorAll('.asteroid-table thead th');
+          if (ths && ths.length >= t.table.length) {
+            for (let i=0;i<t.table.length;i++) ths[i].textContent = t.table[i];
+          }
+          // NASA criteria text
+          const nasaP = document.querySelector('.nasa-criteria p'); if (nasaP) nasaP.innerHTML = t.nasa_criteria_p;
+          // Formulas heading
+          const formH2 = document.querySelector('.formulas h2'); if (formH2) formH2.textContent = t.formulas_h2;
+          // Formula group titles
+          const formulaTitles = document.querySelectorAll('.formula-title');
+          if (formulaTitles && formulaTitles.length >= 3) {
+            formulaTitles[0].textContent = t.formula_kepler;
+            formulaTitles[1].textContent = t.formula_velocity;
+            formulaTitles[2].textContent = t.formula_distance;
+          }
+        }
+
+        const initial = localStorage.getItem('mateoritos_lang') || 'es';
+        applyLang(initial);
+
+        // Listen for changes in localStorage from other tabs/windows
+        window.addEventListener('storage', (ev) => {
+          if (ev.key === 'mateoritos_lang') applyLang(ev.newValue || 'es');
+        });
+      })();
+    </script>
   <!-- Long informational section copied from new/index_new2.html -->
   <div class="space-page-content">
     
