@@ -35,7 +35,7 @@
       window.MathJax = {
         tex: {
           packages: {'[+]': ['ams']},
-          tags: 'all' // number all displayed equations
+          tags: 'ams' // number only equations in ams environments (with \label)
         },
         chtml: {
           scale: 1
@@ -442,7 +442,9 @@
     <div class="formula-group">
       <span class="formula-title">Kepler</span>
       <div class="formula-math">
-        \[\mu = GM = \frac{4\pi^{2} a^{3}}{T^{2}}\]
+                \begin{equation}\label{eq:kepler}
+                  \mu = GM = \frac{4\pi^{2} a^{3}}{T^{2}}
+                \end{equation}
         <div class="formula-note">Con a [km] y T [s]</div>
       </div>
     </div>
@@ -450,14 +452,18 @@
     <div class="formula-group">
       <span class="formula-title">Velocidad del asteroide</span>
       <div class="formula-math">
-        \[v = \sqrt{\mu\left(\frac{2}{r} - \frac{1}{a}\right)}\]
+                \begin{equation}\label{eq:velocity}
+                  v = \sqrt{\mu\left(\frac{2}{r} - \frac{1}{a}\right)}
+                \end{equation}
       </div>
     </div>
 
     <div class="formula-group">
       <span class="formula-title">Distancia con el planeta Tierra</span>
       <div class="formula-math">
-        \[\mathrm{MOID} = \min_{\nu,\mu} \|\mathbf{r}_1(\nu) - \mathbf{r}_2(\mu)\|\]
+                \begin{equation}\label{eq:moid}
+                  \mathrm{MOID} = \min_{\nu,\mu} \left\|\mathbf{r}_1(\nu) - \mathbf{r}_2(\mu)\right\|
+                \end{equation}
       </div>
     </div>
   </section>
