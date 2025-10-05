@@ -51,54 +51,51 @@
         document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description');
 
         const members = t('page3.members') || [];
-        // Convert each full name to "Apellido Nombre" format
-        members.forEach(fullName => {
-          const tokens = (fullName || '').trim().split(/\s+/).filter(Boolean);
-          if(tokens.length === 0) return;
-          // Last token as apellido (if name is e.g. 'Centeno Angel Tomás' => apellido 'Centeno', rest 'Angel Tomás')
-          const apellido = tokens[0];
-          const resto = tokens.slice(1).join(' ');
-          // find matching id by checking known ids in elements
-          // attempt to match by checking IMG filenames (case-insensitive)
-          const idCandidates = ['mica','tomas','joaquin','ignacio','simon','malena'];
-          // try to find element whose current text contains any token of the name
-          let foundId = null;
-          for(const id of idCandidates){
-            const el = document.getElementById('name-' + id);
-            if(!el) continue;
-            // compare with existing innerText or with filename heuristics
-            const cmp = fullName.toLowerCase();
-            if(cmp.includes(id) || el.textContent.toLowerCase().includes(id) || true){
-              // heuristic: match by order of appearance - pop first unmatched id
-              if(!foundId){ foundId = id; }
-            }
-          }
-          // fallback: if no foundId, try mapping by surnames known in dataset
-          const mapping = {
-            'Centeno':'tomas',
-            'Fránco':'mica',
-            'Franco':'mica',
-            'Ávila':'simon',
-            'Avila':'simon',
-            'Favier':'joaquin',
-            'Daniele':'malena',
-            'Andrade':'ignacio'
-          };
-          if(!foundId){
-            for(const k in mapping){ if(fullName.includes(k)){ foundId = mapping[k]; break; } }
-          }
-          if(!foundId) foundId = idCandidates.shift();
 
-          const nameEl = document.getElementById('name-' + foundId);
-          if(nameEl) {
-            // display as 'Apellido Nombre' — using first token as apellido per dataset
-            const display = resto ? `${apellido} ${resto}` : apellido;
-            nameEl.textContent = display;
+        // Desired visual order and id mapping (matches index_3.html placement)
+        const idOrder = ['mica','simon','malena','ignacio','joaquin','tomas'];
+        // tokens to identify names in i18n (diacritics-insensitive)
+        const surnameTokens = {
+          mica: ['micaela','franco','franco'],
+          simon: ['avila','avila boeri','avila boeri simon','simon','simón'],
+          malena: ['daniele','malena'],
+          ignacio: ['andrade','ignacio','martin'],
+          joaquin: ['favier','zakowicz','joaquin'],
+          tomas: ['centeno','angel','tomas']
+        };
+
+        const normalize = s => (s||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+        const used = new Array(members.length).fill(false);
+
+        const filenameMap = {
+          mica: '../IMG.mica.png',
+          tomas: '../IMG.Tomas.png',
+          joaquin: '../IMG.Joaquin.png',
+          ignacio: '../IMG.Ignacio.png',
+          simon: '../IMG.Simon.png',
+          malena: '../IMG.Malena.png'
+        };
+
+        idOrder.forEach(id => {
+          // find a member in the i18n list that matches expected tokens
+          let foundIdx = -1;
+          for(let i=0;i<members.length;i++){
+            if(used[i]) continue;
+            const norm = normalize(members[i]);
+            if(surnameTokens[id].some(tok => norm.includes(tok))) { foundIdx = i; break; }
           }
-          const el = document.querySelector('.ellipse.' + foundId);
-          if (el) {
-            el.style.backgroundImage = `url('../IMG.${foundId === 'mica' ? 'mica' : foundId[0].toUpperCase()+foundId.slice(1)}.png')`;
+          if(foundIdx === -1){
+            // fallback: first unused
+            foundIdx = members.findIndex((m,idx)=>!used[idx]);
           }
+          if(foundIdx !== -1){
+            used[foundIdx] = true;
+            const fullName = members[foundIdx];
+            const nameEl = document.getElementById('name-' + id);
+            if(nameEl) nameEl.textContent = fullName; // show full name as given in i18n
+          }
+          const ellipse = document.querySelector('.ellipse.' + id);
+          if(ellipse){ ellipse.style.backgroundImage = `url('${filenameMap[id] || `../IMG.${id}.png`}')`; }
         });
       });
 
