@@ -15,9 +15,18 @@
         <div class="left-content" style="position:relative;padding:20px;display:flex;flex-direction:column;gap:12px;">
           <!-- Slides moved here -->
           <div id="slides-panel" style="display:flex;flex-direction:column;gap:8px;">
-            <button class="slide-btn" data-preset="1">Asteroide 1</button>
-            <button class="slide-btn" data-preset="2">Asteroide 2</button>
-            <button class="slide-btn" data-preset="3">Asteroide 3</button>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <button class="slide-btn" data-preset="1">Asteroide 1</button>
+              <button class="save-btn" data-preset="1" title="Guardar parámetros">💾</button>
+            </div>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <button class="slide-btn" data-preset="2">Asteroide 2</button>
+              <button class="save-btn" data-preset="2" title="Guardar parámetros">💾</button>
+            </div>
+            <div style="display:flex;gap:6px;align-items:center;">
+              <button class="slide-btn" data-preset="3">Asteroide 3</button>
+              <button class="save-btn" data-preset="3" title="Guardar parámetros">💾</button>
+            </div>
           </div>
           <!-- Controls: native HTML ranges to replace p5 sliders -->
           <div id="controls" style="display:flex;flex-direction:column;gap:8px; margin-top:8px;">
@@ -57,12 +66,37 @@
       document.addEventListener('DOMContentLoaded', () => {
         const panel = document.getElementById('slides-panel');
         if (!panel) return;
-        // preset mapping
-        const presets = {
+        // preset mapping (will be loaded from localStorage if present)
+        const DEFAULT_PRESETS = {
           1: { a: 0.01, e: 0.2, i: 2.5 },
           2: { a: 0.005, e: 0.7, i: 10.0 },
           3: { a: 0.002, e: 0.86, i: 4.1 }
         };
+
+        function loadPresets() {
+          try {
+            const raw = localStorage.getItem('mateoritos_presets_v1');
+            if (!raw) return Object.assign({}, DEFAULT_PRESETS);
+            const parsed = JSON.parse(raw);
+            // ensure keys 1..3 exist
+            return Object.assign({}, DEFAULT_PRESETS, parsed);
+          } catch (e) {
+            console.warn('Failed to load presets from localStorage', e);
+            return Object.assign({}, DEFAULT_PRESETS);
+          }
+        }
+
+        function savePresets(presets) {
+          try {
+            localStorage.setItem('mateoritos_presets_v1', JSON.stringify(presets));
+            return true;
+          } catch (e) {
+            console.warn('Failed to save presets to localStorage', e);
+            return false;
+          }
+        }
+
+        let presets = loadPresets();
 
         panel.querySelectorAll('.slide-btn').forEach(btn => {
           btn.addEventListener('click', () => {
@@ -78,6 +112,31 @@
             // visual feedback
             panel.querySelectorAll('.slide-btn').forEach(b => b.style.opacity = '0.6');
             btn.style.opacity = '1';
+          });
+        });
+        // wire up the save buttons so users can store the current ranges into the preset slot
+        panel.querySelectorAll('.save-btn').forEach(saveBtn => {
+          saveBtn.addEventListener('click', () => {
+            const p = Number(saveBtn.getAttribute('data-preset')) || 1;
+            const aRange = document.getElementById('a-range');
+            const eRange = document.getElementById('e-range');
+            const iRange = document.getElementById('i-range');
+            if (!aRange || !eRange || !iRange) return;
+            presets[p] = { a: parseFloat(aRange.value), e: parseFloat(eRange.value), i: parseFloat(iRange.value) };
+            const ok = savePresets(presets);
+            // tiny UI feedback: flash the button background briefly
+            const orig = saveBtn.style.background;
+            if (ok) {
+              saveBtn.style.background = '#28a745';
+              saveBtn.textContent = '✓';
+            } else {
+              saveBtn.style.background = '#dc3545';
+              saveBtn.textContent = '✕';
+            }
+            setTimeout(() => {
+              saveBtn.style.background = orig;
+              saveBtn.textContent = '💾';
+            }, 800);
           });
         });
         // set initial opacity
