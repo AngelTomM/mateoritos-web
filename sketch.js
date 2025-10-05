@@ -46,14 +46,18 @@ async function setup() {
     iSlider.style('width', '200px');
   }
 
+  // Create info divs but parent them to left-panel containers so they appear inside the card
   infoDiv = createDiv('');
-  infoDiv.position(220, 10);
+  peligroDiv = createDiv('');
+  // Attach to existing left-panel placeholders if present
+  const infoContainer = document.getElementById('info-values');
+  const peligroContainer = document.getElementById('peligro-div');
+  if (infoContainer) infoDiv.parent(infoContainer);
+  if (peligroContainer) peligroDiv.parent(peligroContainer);
+  // style them to match previous appearance
   infoDiv.style('color', 'white');
   infoDiv.style('font-family', 'Arial');
   infoDiv.style('font-size', '14px');
-
-  peligroDiv = createDiv('');
-  peligroDiv.position(220, 160);
   peligroDiv.style('color', 'yellow');
   peligroDiv.style('font-family', 'Arial');
   peligroDiv.style('font-size', '18px');
