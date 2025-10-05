@@ -15,48 +15,13 @@
           <div class="title-underline" role="presentation"></div>
         </header>
         <section class="team-section">
-          <h2 class="team-title">Equipo Meteoritos</h2>
-          <p class="team-description">
+          <h2 class="team-title" id="page3-team-name">Equipo Meteoritos</h2>
+          <p class="team-description" id="page3-team-desc">
             Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis, participando
             en el NASA Space Apps Challenge.
           </p>
-          <div class="team-members">
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.Tomas.jpg" alt="Centeno Angel Tomás" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Centeno Angel Tomás</h3>
-            </article>
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.mica.jpg" alt="Fránco Micaela" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Fránco Micaela</h3>
-            </article>
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.Simon.jpg" alt="Ávila Boeri Simón" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Ávila Boeri Simón</h3>
-            </article>
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.Joaquin.jpg" alt="Favier Zakowicz Joaquín" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Favier Zakowicz Joaquín</h3>
-            </article>
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.Malena.jpg" alt="Daniele Malena" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Daniele Malena</h3>
-            </article>
-            <article class="team-member">
-              <div class="member-avatar">
-                <img src="../IMG.Ignacio.jpg" alt="Andrade Ignacio Martin" class="avatar-image" />
-              </div>
-              <h3 class="member-name">Andrade Ignacio Martín</h3>
-            </article>
+          <div class="team-members" id="page3-members">
+            <!-- Member cards will be injected here by i18n loader -->
           </div>
         </section>
         <footer class="page-footer">
@@ -72,5 +37,60 @@
         </footer>
       </article>
     </main>
+
+    <script src="../i18n/loader.js"></script>
+    <script>
+      (async function(){
+        await i18n.load();
+        const d = i18n.t('page3');
+        // title may include HTML in translations; keep plain text here
+        document.querySelector('.page-title').textContent = d.title || document.querySelector('.page-title').textContent;
+        document.getElementById('page3-team-name').textContent = d.team_name;
+        document.getElementById('page3-team-desc').textContent = d.team_description;
+        document.querySelector('.footer-text').textContent = d.footer;
+
+        const membersCont = document.getElementById('page3-members');
+        membersCont.innerHTML = '';
+
+        function chooseImageFor(name){
+          const n = (name||'').toLowerCase();
+          if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.jpg';
+          if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.jpg';
+          if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.jpg';
+          if(n.includes('mica') || n.includes('fránco') || n.includes('franco')) return '../IMG.mica.jpg';
+          if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.jpg';
+          if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.jpg';
+          return '';
+        }
+
+        (d.members||[]).forEach(name => {
+          const imgSrc = chooseImageFor(name);
+          const card = document.createElement('article');
+          card.className = 'team-member';
+          card.innerHTML = `\n            <div class="member-avatar"><img src="${imgSrc}" alt="Foto de ${name}" class="avatar-image" /></div>\n            <h3 class="member-name">${name}</h3>\n          `;
+          membersCont.appendChild(card);
+        });
+
+        // react to language changes from other tabs
+        window.addEventListener('storage', async(ev)=>{
+          if(ev.key === 'mateoritos_lang'){
+            await i18n.load();
+            const d2 = i18n.t('page3');
+            document.querySelector('.page-title').textContent = d2.title;
+            document.getElementById('page3-team-name').textContent = d2.team_name;
+            document.getElementById('page3-team-desc').textContent = d2.team_description;
+            document.querySelector('.footer-text').textContent = d2.footer;
+            membersCont.innerHTML = '';
+            (d2.members||[]).forEach(name => {
+              const imgSrc = chooseImageFor(name);
+              const card = document.createElement('article');
+              card.className = 'team-member';
+              card.innerHTML = `\n                <div class="member-avatar"><img src="${imgSrc}" alt="Foto de ${name}" class="avatar-image" /></div>\n                <h3 class="member-name">${name}</h3>\n              `;
+              membersCont.appendChild(card);
+            });
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
