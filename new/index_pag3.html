@@ -10,73 +10,76 @@
   <body>
     <section class="about-us-section">
       <div class="header-content">
-        <div class="header-inner">
-          <h1 id="page3-title">SOBRE NOSOTROS</h1>
-        </div>
-        <hr class="header-divider red">
-        <hr class="header-divider white">
-      </div>
+        <!doctype html>
+        <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title data-i18n="page3.title">Team</title>
+            <link rel="stylesheet" href="style_3.css">
+          </head>
+          <body>
+            <div class="background"></div>
+            <div class="meteoro-top"></div>
+            <div class="meteoro-bottom"></div>
 
-      <div class="team-members" id="page3-members">
-        <!-- member cards injected by i18n script -->
-      </div>
+            <div class="rectangle"></div>
 
-      <!-- leave team-intro at the end as a subtitle section -->
+            <h1 class="titulo" id="page-title">Equipo Mateoritos</h1>
+            <div class="team" id="team-name">Mateoritos</div>
+            <div class="descripcion" id="team-desc">Aplicación de ejemplo para la demostración</div>
 
-      <div style="margin-top:16px;">
-        <a href="../index.html" class="back-btn" style="display:inline-block;text-decoration:none;">
-          <button id="page3-back-btn" style="padding:10px 14px;border-radius:8px;border:none;background:#fc3d21;color:white;cursor:pointer;">Volver al inicio</button>
-        </a>
-      </div>
+            <!-- member ellipses (background images) -->
+            <div class="ellipse mica" data-member="mica"></div>
+            <div class="ellipse tomas" data-member="tomas"></div>
+            <div class="ellipse joaquin" data-member="joaquin"></div>
+            <div class="ellipse ignacio" data-member="ignacio"></div>
+            <div class="ellipse simon" data-member="simon"></div>
+            <div class="ellipse malena" data-member="malena"></div>
 
-      <div class="footer-logos">
-        <div class="footer-left-logos">
-          <img src="../UNSL.png" alt="UNSL" class="footer-logo-img">
-          <img src="../FICA_logo.png" alt="FICA" class="footer-logo-img" style="margin-left:10px;">
-        </div>
-        <p class="footer-note" id="page3-footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
-      </div>
+            <!-- names positioned under ellipses -->
+            <div class="nombre mica" id="name-mica">Mica</div>
+            <div class="nombre simon" id="name-simon">Simon</div>
+            <div class="nombre malena" id="name-malena">Malena</div>
+            <div class="nombre ignacio" id="name-ignacio">Ignacio</div>
+            <div class="nombre joaquin" id="name-joaquin">Joaquin</div>
+            <div class="nombre tomas" id="name-tomas">Tomas</div>
 
-      <div class="team-intro">
-        <h2 id="page3-team-name">Equipo Meteoritos</h2>
-        <p id="page3-team-desc">Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis participando en el NASA Space Apps Challenge.</p>
-      </div>
-    </section>
+            <div class="logo-unsl"></div>
+            <div class="logo-fica"></div>
 
-    <script src="../i18n/loader.js"></script>
-    <script>
-      (async function(){
-        await i18n.load();
-        const d = i18n.t('page3');
-  // fill texts
-  document.getElementById('page3-title').textContent = d.title || document.getElementById('page3-title').textContent;
-  document.getElementById('page3-team-name').textContent = d.team_name;
-  document.getElementById('page3-team-desc').textContent = d.team_description;
-  document.getElementById('page3-footer').textContent = d.footer;
-  // back button text comes from root i18n 'back'
-  const root = i18n.t();
-  const backText = (root && root.back) ? root.back : 'Volver al inicio';
-  const backBtn = document.getElementById('page3-back-btn'); if (backBtn) backBtn.textContent = backText;
+            <div class="footer"> <div id="footer-text">Universidad Nacional de San Luis - FICA</div></div>
 
-        const membersCont = document.getElementById('page3-members');
-        membersCont.innerHTML = '';
+            <button id="back-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Volver al inicio</button>
 
-        function chooseImageFor(name){
-          const n = (name||'').toLowerCase();
-          if(n.includes('ignac') || n.includes('andrade')) return '../IMG.Ignacio.png';
-          if(n.includes('joaquin') || n.includes('favier')) return '../IMG.Joaquin.png';
-          if(n.includes('malena') || n.includes('daniele')) return '../IMG.Malena.png';
-          if(n.includes('mica') || n.includes('fránco') || n.includes('franco')) return '../IMG.mica.png';
-          if(n.includes('simon') || n.includes('ávila') || n.includes('avila')) return '../IMG.Simon.png';
-          if(n.includes('tomas') || n.includes('centeno')) return '../IMG.Tomas.png';
-          return '';
-        }
+            <script src="../i18n/loader.js"></script>
+            <script>
+              // populate texts from i18n
+              i18n.load().then(() => {
+                const t = i18n.t;
+                document.getElementById('page-title').textContent = t('page3.title');
+                document.getElementById('team-name').textContent = t('page3.teamName');
+                document.getElementById('team-desc').textContent = t('page3.description');
 
-        function makeImgWithFallback(basePaths){
-          const img = document.createElement('img');
-          let i = 0;
-          img.alt = '';
-          img.onerror = function(){
+                const members = t('page3.members');
+                // members is expected as array of { id: 'mica', name: 'Mica' }
+                members.forEach(m => {
+                  const nameEl = document.getElementById('name-' + m.id);
+                  if (nameEl) nameEl.textContent = m.name;
+                  // set ellipse background if element exists
+                  const el = document.querySelector('.ellipse.' + m.id);
+                  if (el) {
+                    el.style.backgroundImage = `url('../IMG.${m.id}.png')`;
+                  }
+                });
+              });
+
+              document.getElementById('back-btn').addEventListener('click', () => {
+                window.location.href = '../index_new.html';
+              });
+            </script>
+          </body>
+        </html>
             i++;
             if(i < basePaths.length){
               img.src = basePaths[i];

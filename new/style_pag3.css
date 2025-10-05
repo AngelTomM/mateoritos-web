@@ -121,11 +121,20 @@
   align-items: center;
 }
 
-.logo-unsl,
+.logo-unsl {
+  height: 60px;
+  width: 88px;
+  background: url('../UNSL.png') no-repeat center left;
+  background-size: contain;
+  display: block;
+}
+
 .logo-fica {
   height: 60px;
-  display: flex;
-  align-items: center;
+  width: 160px;
+  background: url('../FICA_logo.png') no-repeat center left;
+  background-size: contain;
+  display: block;
 }
 
 .logo-image {
