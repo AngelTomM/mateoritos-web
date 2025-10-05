@@ -4,26 +4,29 @@ body {
   padding: 0;
   font-family: 'Bai Jamjuree', sans-serif;
   position: relative;
-  width: 1440px;
-  height: 1024px; /* match main page resolution */
+  width: 100vw;
+  height: 100vh;
+  min-width: 320px;
+  min-height: 600px;
   background: #0B3D91;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .background {
   position: absolute;
-  width: 1440px;
-  height: 1155px;
+  width: 100vw;
+  height: 100vh;
   background: #0B3D91;
   z-index: 0;
 }
 
 .meteoro-top {
   position: absolute;
-  width: 1446px;
-  height: 880px;
-  left: -6px;
-  top: 0px;
+  width: 100vw;
+  height: 70vh;
+  left: 0;
+  top: 0;
   background: url('../FondoEspacio.png');
   background-size: cover;
   z-index: 1;
@@ -31,10 +34,10 @@ body {
 
 .meteoro-bottom {
   position: absolute;
-  width: 1440px;
-  height: 200px;
-  left: 0px;
-  top: 855px;
+  width: 100vw;
+  height: 18vh;
+  left: 0;
+  bottom: 0;
   background: url('../FondoEspacio.png');
   background-size: cover;
   z-index: 2;
@@ -109,8 +112,8 @@ body {
 .nombre {
   position: absolute;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 50px;
+  font-size: 22px; /* reduced to subtitle size */
+  line-height: 28px;
   color: #FFFFFF;
   z-index: 6;
 }
@@ -126,7 +129,7 @@ body {
   width: 88px;
   height: 88px;
   left: 68px;
-  top: 880px; /* moved up so it's visible above footer */
+  bottom: 40px;
   background: url('../UNSL.png') no-repeat center;
   background-size: contain;
   z-index: 12;
@@ -137,7 +140,7 @@ body {
   width: 220px;
   height: 88px;
   left: 170px;
-  top: 876px; /* slightly higher to align with UNSL */
+  bottom: 40px;
   background: url('../FICA_logo.png') no-repeat center;
   background-size: contain;
   z-index: 12;
@@ -161,7 +164,7 @@ body {
   width: 544px;
   height: 20px;
   left: 862px;
-  top: 980px;
+  bottom: 20px;
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
@@ -172,3 +175,23 @@ body {
   text-align: center;
   z-index: 9;
 }
+
+/* Back button used on page 3 */
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: #FC3D21;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.back-button:hover{ filter: brightness(0.95); }
