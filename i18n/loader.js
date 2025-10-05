@@ -5,10 +5,13 @@
     data: null,
     lang: null,
     async load(){
-      const preferred = localStorage.getItem('mateoritos_lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
-      this.lang = preferred;
-      const res = await fetch(`i18n/${this.lang}.json`);
-      this.data = await res.json();
+  const preferred = localStorage.getItem('mateoritos_lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+  this.lang = preferred;
+  // Determine base URL relative to this loader script so pages in subfolders work
+  const scriptUrl = (document.currentScript && document.currentScript.src) ? document.currentScript.src : new URL('loader.js', window.location.href).href;
+  const base = new URL('.', scriptUrl); // points to /.../i18n/
+  const res = await fetch(new URL(`${this.lang}.json`, base));
+  this.data = await res.json();
       window.dispatchEvent(new CustomEvent('i18n:loaded', { detail: { lang: this.lang }}));
       return this.data;
     },
