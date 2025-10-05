@@ -224,6 +224,20 @@
   border-radius: 20px;
   border: 4px solid #fc3d21;
 }
+.ventana .div .tabs {
+  height: 100%;
+  box-sizing: border-box;
+}
+.ventana .div .tab-btn {
+  background: linear-gradient(90deg, #FC3D21 0%, #962414 100%);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ventana .div .tab-btn:hover { opacity: 0.95; }
 .ventana .rectangle-2 {
   position: absolute;
   top: 337px;
@@ -236,10 +250,28 @@
 }
 .ventana .rectangle-2 #simulacion-container {
   position: absolute;
-  inset: 0;
+  top: 60px; /* leave space for slides at top */
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 60px);
 }
+
+/* Slide panel now sits at the top-right inside the right card */
+#slides-panel {
+  display: flex;
+  gap: 8px;
+}
+#slides-panel .slide-btn {
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#slides-panel .slide-btn:hover { background: rgba(255,255,255,0.12); }
 
 /* Styles from new/style_new.css to ensure canvas fills and body has no margins */
 html, body {

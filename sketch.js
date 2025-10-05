@@ -10,21 +10,41 @@ let earthTexture, moonTexture;
 let stars = [];
 
 async function setup() {
-  createCanvas(800, 800, WEBGL);
+  // create a temporary canvas; we'll parent and resize it to the container after DOM is ready
+  const cnv = createCanvas(800, 800, WEBGL);
   angleMode(RADIANS);
 
   earthTexture = await loadImage('https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg');
   moonTexture = await loadImage('https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg');
 
   aSlider = createSlider(0.00001, 1.6, 1.6, 0.000001);
-  aSlider.position(10, 10);
-  aSlider.style('width', '200px');
   eSlider = createSlider(0.0, 0.99, 0.8611, 0.001);
-  eSlider.position(10, 40);
-  eSlider.style('width', '200px');
   iSlider = createSlider(0, 45, 4.10, 0.01);
-  iSlider.position(10, 70);
-  iSlider.style('width', '200px');
+  // move sliders into left panel so they appear inside the card
+  const leftPanel = document.getElementById('left-panel');
+  if (leftPanel) {
+    aSlider.parent(leftPanel);
+    eSlider.parent(leftPanel);
+    iSlider.parent(leftPanel);
+    // basic inline styles for layout inside the left panel
+    aSlider.elt.style.display = 'block';
+    aSlider.elt.style.margin = '8px 0';
+    eSlider.elt.style.display = 'block';
+    eSlider.elt.style.margin = '8px 0';
+    iSlider.elt.style.display = 'block';
+    iSlider.elt.style.margin = '8px 0';
+    aSlider.style('width', '200px');
+    eSlider.style('width', '200px');
+    iSlider.style('width', '200px');
+  } else {
+    // fallback to absolute positioning
+    aSlider.position(10, 10);
+    aSlider.style('width', '200px');
+    eSlider.position(10, 40);
+    eSlider.style('width', '200px');
+    iSlider.position(10, 70);
+    iSlider.style('width', '200px');
+  }
 
   infoDiv = createDiv('');
   infoDiv.position(220, 10);
@@ -45,6 +65,25 @@ async function setup() {
       y: random(-2000, 2000),
       z: random(-2000, 2000)
     });
+  }
+
+  // Parent canvas to the simulacion container and resize to fit
+  const container = document.getElementById('simulacion-container');
+  if (container && cnv) {
+    cnv.parent(container);
+    function fitCanvas() {
+      const w = container.clientWidth || 800;
+      const h = container.clientHeight || 600;
+      resizeCanvas(w, h);
+    }
+    fitCanvas();
+    // Resize on window resize
+    window.addEventListener('resize', fitCanvas);
+    // Also use a ResizeObserver for the container to react to layout changes
+    if (window.ResizeObserver) {
+      const ro = new ResizeObserver(() => fitCanvas());
+      ro.observe(container);
+    }
   }
 }
 

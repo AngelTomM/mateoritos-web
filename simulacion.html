@@ -11,10 +11,16 @@
   <img class="chatgpt-image-oct" src="FondoEspacio.png" />
       <div class="rectangle"></div>
       <p class="SIMULACION-DE">SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES</p>
-      <div class="div"></div>
+      <div class="div" id="left-panel">
+        <div class="tabs" style="position:relative;padding:20px;display:flex;flex-direction:column;gap:12px;">
+          <button class="tab-btn" data-tab="asteroides">Asteroides</button>
+          <button class="tab-btn" data-tab="simulacion">Simulación</button>
+          <button class="tab-btn" data-tab="sobre-nosotros">Sobre Nosotros</button>
+        </div>
+      </div>
       <div class="rectangle-2">
-        <!-- Left slide panel inside the right card -->
-        <div id="slides-panel" style="position:absolute;top:20px;left:20px;bottom:20px;width:120px;display:flex;flex-direction:column;gap:12px;z-index:30;">
+        <!-- Slide panel (moved to top-right of the right card) -->
+        <div id="slides-panel" style="position:absolute;top:20px;right:20px;bottom:auto;width:auto;display:flex;flex-direction:column;gap:12px;z-index:30;">
           <button class="slide-btn" data-slide="1">Slide 1</button>
           <button class="slide-btn" data-slide="2">Slide 2</button>
           <button class="slide-btn" data-slide="3">Slide 3</button>
@@ -45,6 +51,22 @@
         panel.querySelectorAll('.slide-btn').forEach(b => b.style.opacity = '0.6');
         const first = panel.querySelector('.slide-btn[data-slide="1"]');
         if (first) first.style.opacity = '1';
+      });
+      // tabs logic for left panel
+      document.addEventListener('DOMContentLoaded', () => {
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(t => t.addEventListener('click', () => {
+          tabs.forEach(x => x.style.opacity = '0.7');
+          t.style.opacity = '1';
+          const tab = t.getAttribute('data-tab');
+          if (tab === 'simulacion') {
+            // ensure slide 1 is shown by default
+            window.currentSlide = 1;
+          }
+        }));
+        // set default active tab
+        const firstTab = document.querySelector('.tab-btn[data-tab="simulacion"]');
+        if (firstTab) firstTab.style.opacity = '1';
       });
     </script>
     <script src="sketch.js"></script>
