@@ -39,15 +39,15 @@
 
     <div class="footer"> <div id="footer-text">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</div></div>
 
-    <button id="back-btn" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Volver al inicio</button>
+   <button id="back-btn" class="BotonVisualizarSimulacion" style="position:absolute; left:20px; top:50%; transform:translateY(-50%); z-index:20;">Inicio</button>
 
     <script src="../i18n/loader.js"></script>
     <script>
       // populate texts from i18n (lightweight: replace headings and names)
       i18n.load().then(() => {
         const t = i18n.t;
-        document.getElementById('page-title').textContent = t('page3.title') || 'SOBRE NOSOTROS';
-        document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateoritos';
+  document.getElementById('page-title').textContent = t('page3.title') || 'Sobre Nosotros';
+  document.getElementById('team-name').textContent = t('page3.team_name') || t('page3.teamName') || 'Equipo Mateorito';
         document.getElementById('team-desc').textContent = t('page3.team_description') || t('page3.description') || '';
 
         const members = t('page3.members') || [];
@@ -97,7 +97,7 @@
       });
 
       document.getElementById('back-btn').addEventListener('click', () => {
-        window.location.href = '../index_new.html';
+        window.location.href = '../index.html';
       });
     </script>
   </body>
