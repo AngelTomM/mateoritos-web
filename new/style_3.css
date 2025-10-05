@@ -112,10 +112,42 @@ body {
 .nombre {
   position: absolute;
   font-weight: 700;
-  font-size: 22px; /* reduced to subtitle size */
+  font-size: 22px;
   line-height: 28px;
   color: #FFFFFF;
   z-index: 6;
+  text-align: center;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+/* Botón igual al de la página 2 */
+.BotonVisualizarSimulacion {
+  position: absolute;
+  width: 300px;
+  height: 60px;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #FC3D21;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arsenal SC', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 20;
+  transition: filter 0.2s;
+}
+.BotonVisualizarSimulacion:hover {
+  filter: brightness(0.95);
 }
 .nombre.mica { width: 336px; height: 58px; left: 578px; top: 512px; }
 .nombre.simon { width: 381px; height: 55px; left: 949px; top: 512px; }
