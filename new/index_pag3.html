@@ -72,11 +72,61 @@
           return '';
         }
 
+        function makeImgWithFallback(basePaths){
+          const img = document.createElement('img');
+          let i = 0;
+          img.alt = '';
+          img.onerror = function(){
+            i++;
+            if(i < basePaths.length){
+              img.src = basePaths[i];
+            } else {
+              // final fallback: remove broken image or set placeholder
+              img.onerror = null;
+              img.src = '';
+              img.style.display = 'none';
+            }
+          };
+          img.src = basePaths[0];
+          return img;
+        }
+
         (d.members||[]).forEach(name => {
-          const img = chooseImageFor(name);
+          const candidateBase = (function(){
+            // build candidate filenames based on common patterns
+            // prefer the repository naming: IMG.Name.jpg
+            const tokens = name.split(/\s+/).filter(Boolean);
+            // try variants: Last token or First token depending
+            const prefer = tokens.length ? tokens[tokens.length-1] : name;
+            // normalize: remove diacritics for one variant
+            const norm = prefer.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+            const variants = [prefer, norm, prefer.toLowerCase(), norm.toLowerCase(), prefer.toUpperCase()];
+            const bases = [];
+            variants.forEach(v => {
+              if(!v) return;
+              bases.push(`../IMG.${v}.jpg`);
+              bases.push(`../IMG.${v}.png`);
+            });
+            // also try some explicit names used in repo
+            bases.push('../IMG.Ignacio.jpg','../IMG.Joaquin.jpg','../IMG.Malena.jpg','../IMG.mica.jpg','../IMG.Simon.jpg','../IMG.Tomas.jpg');
+            // remove duplicates
+            return Array.from(new Set(bases));
+          })();
+
+          const photoDiv = document.createElement('div');
+          photoDiv.className = 'member-photo';
+          const imgEl = makeImgWithFallback(candidateBase);
+          imgEl.alt = `Foto de ${name}`;
+          photoDiv.appendChild(imgEl);
+
+          const nameP = document.createElement('p');
+          nameP.className = 'member-name';
+          nameP.textContent = name;
+
           const card = document.createElement('div');
           card.className = 'member-card';
-          card.innerHTML = `\n            <div class="member-photo">\n              <img src="${img}" alt="Foto de ${name}">\n            </div>\n            <p class="member-name">${name}</p>\n          `;
+          card.appendChild(photoDiv);
+          card.appendChild(nameP);
           membersCont.appendChild(card);
         });
 
@@ -93,10 +143,32 @@
             const backBtn2 = document.getElementById('page3-back-btn'); if (backBtn2) backBtn2.textContent = backText2;
             membersCont.innerHTML = '';
             (d2.members||[]).forEach(name => {
-              const img = chooseImageFor(name);
+              const candidateBase = (function(){
+                const tokens = name.split(/\s+/).filter(Boolean);
+                const prefer = tokens.length ? tokens[tokens.length-1] : name;
+                const norm = prefer.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+                const variants = [prefer, norm, prefer.toLowerCase(), norm.toLowerCase(), prefer.toUpperCase()];
+                const bases = [];
+                variants.forEach(v => {
+                  if(!v) return;
+                  bases.push(`../IMG.${v}.jpg`);
+                  bases.push(`../IMG.${v}.png`);
+                });
+                bases.push('../IMG.Ignacio.jpg','../IMG.Joaquin.jpg','../IMG.Malena.jpg','../IMG.mica.jpg','../IMG.Simon.jpg','../IMG.Tomas.jpg');
+                return Array.from(new Set(bases));
+              })();
+              const photoDiv = document.createElement('div');
+              photoDiv.className = 'member-photo';
+              const imgEl = makeImgWithFallback(candidateBase);
+              imgEl.alt = `Foto de ${name}`;
+              photoDiv.appendChild(imgEl);
+              const nameP = document.createElement('p');
+              nameP.className = 'member-name';
+              nameP.textContent = name;
               const card = document.createElement('div');
               card.className = 'member-card';
-              card.innerHTML = `\n                <div class="member-photo">\n                  <img src="${img}" alt="Foto de ${name}">\n                </div>\n                <p class="member-name">${name}</p>\n              `;
+              card.appendChild(photoDiv);
+              card.appendChild(nameP);
               membersCont.appendChild(card);
             });
           }
