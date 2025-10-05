@@ -144,8 +144,42 @@
         });
         // set initial opacity
         panel.querySelectorAll('.slide-btn').forEach(b => b.style.opacity = '0.6');
-        const first = panel.querySelector('.slide-btn[data-slide="1"]');
+        const first = panel.querySelector('.slide-btn[data-preset="1"]');
         if (first) first.style.opacity = '1';
+
+        // reset button: restore DEFAULT_PRESETS into storage and apply default values to ranges
+        const resetBtn = document.getElementById('reset-presets');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            presets = Object.assign({}, DEFAULT_PRESETS);
+            const ok = savePresets(presets);
+            // apply preset 1 values to the ranges so user sees the reset
+            const aRange = document.getElementById('a-range');
+            const eRange = document.getElementById('e-range');
+            const iRange = document.getElementById('i-range');
+            const p = presets[1] || DEFAULT_PRESETS[1];
+            if (aRange) { aRange.value = p.a; aRange.dispatchEvent(new Event('input')); }
+            if (eRange) { eRange.value = p.e; eRange.dispatchEvent(new Event('input')); }
+            if (iRange) { iRange.value = p.i; iRange.dispatchEvent(new Event('input')); }
+            // visual feedback
+            const origBg = resetBtn.style.background;
+            const origText = resetBtn.textContent;
+            if (ok) {
+              resetBtn.style.background = '#28a745';
+              resetBtn.textContent = 'Restaurado ✓';
+            } else {
+              resetBtn.style.background = '#dc3545';
+              resetBtn.textContent = 'Error';
+            }
+            setTimeout(() => {
+              resetBtn.style.background = origBg;
+              resetBtn.textContent = origText;
+            }, 1200);
+            // set first preset visual active
+            panel.querySelectorAll('.slide-btn').forEach(b => b.style.opacity = '0.6');
+            if (first) first.style.opacity = '1';
+          });
+        }
       });
     </script>
     <script src="sketch.js"></script>
