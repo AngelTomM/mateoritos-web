@@ -105,9 +105,8 @@
             variants.forEach(v => {
               if(!v) return;
               bases.push(`../IMG.${v}.png`);
-              bases.push(`../IMG.${v}.jpg`);
             });
-            // also try some explicit names used in repo (png preferred)
+            // explicit PNG names
             bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
             // remove duplicates
             return Array.from(new Set(bases));
@@ -152,7 +151,6 @@
                 variants.forEach(v => {
                   if(!v) return;
                   bases.push(`../IMG.${v}.png`);
-                  bases.push(`../IMG.${v}.jpg`);
                 });
                 bases.push('../IMG.Ignacio.png','../IMG.Joaquin.png','../IMG.Malena.png','../IMG.mica.png','../IMG.Simon.png','../IMG.Tomas.png');
                 return Array.from(new Set(bases));
