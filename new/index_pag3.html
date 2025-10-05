@@ -3,51 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Equipo Meteoritos - Estudiantes de Ingeniería Mecatrónica - NASA Space Apps Challenge" />
+    <meta name="description" content="Equipo Meteoritos - Sobre Nosotros" />
     <title>Sobre Nosotros - Equipo Meteoritos</title>
-    <link rel="stylesheet" href="style_pag3.css" />
+    <link rel="stylesheet" href="style_pagina3.css" />
   </head>
   <body>
-    <main class="frame">
-      <article class="content-wrapper">
-        <header class="page-header">
-          <h1 class="page-title">SOBRE NOSOTROS</h1>
-          <div class="title-underline" role="presentation"></div>
-        </header>
-        <section class="team-section">
-          <h2 class="team-title" id="page3-team-name">Equipo Meteoritos</h2>
-          <p class="team-description" id="page3-team-desc">
-            Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis, participando
-            en el NASA Space Apps Challenge.
-          </p>
-          <div class="team-members" id="page3-members">
-            <!-- Member cards will be injected here by i18n loader -->
-          </div>
-        </section>
-        <footer class="page-footer">
-          <div class="footer-logos">
-            <div class="logo-unsl">
-              <img src="../UNSL.png" alt="Universidad Nacional de San Luis" class="logo-image" />
-            </div>
-            <div class="logo-fica">
-              <img src="../SPACEAPPSCHALLENGE.png" alt="Space Apps Challenge" class="logo-image" />
-            </div>
-          </div>
-          <p class="footer-text">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
-        </footer>
-      </article>
-    </main>
+    <section class="about-us-section">
+      <div class="header-content">
+        <h1 id="page3-title">SOBRE NOSOTROS</h1>
+        <hr class="header-divider red">
+        <hr class="header-divider white">
+      </div>
+
+      <div class="team-intro">
+        <h2 id="page3-team-name">Equipo Meteoritos</h2>
+        <p id="page3-team-desc">Un equipo conformado por estudiantes de Ingeniería Mecatrónica de la Universidad Nacional de San Luis participando en el NASA Space Apps Challenge.</p>
+      </div>
+
+      <div class="team-members" id="page3-members">
+        <!-- member cards injected by i18n script -->
+      </div>
+
+      <div class="footer-logos">
+        <p class="footer-note" id="page3-footer">NASA SPACE APPS CHALLENGE 2025 - SAN LUIS, ARGENTINA</p>
+      </div>
+    </section>
 
     <script src="../i18n/loader.js"></script>
     <script>
       (async function(){
         await i18n.load();
         const d = i18n.t('page3');
-        // title may include HTML in translations; keep plain text here
-        document.querySelector('.page-title').textContent = d.title || document.querySelector('.page-title').textContent;
+        // fill texts
+        document.getElementById('page3-title').textContent = d.title || document.getElementById('page3-title').textContent;
         document.getElementById('page3-team-name').textContent = d.team_name;
         document.getElementById('page3-team-desc').textContent = d.team_description;
-        document.querySelector('.footer-text').textContent = d.footer;
+        document.getElementById('page3-footer').textContent = d.footer;
 
         const membersCont = document.getElementById('page3-members');
         membersCont.innerHTML = '';
@@ -64,28 +55,27 @@
         }
 
         (d.members||[]).forEach(name => {
-          const imgSrc = chooseImageFor(name);
-          const card = document.createElement('article');
-          card.className = 'team-member';
-          card.innerHTML = `\n            <div class="member-avatar"><img src="${imgSrc}" alt="Foto de ${name}" class="avatar-image" /></div>\n            <h3 class="member-name">${name}</h3>\n          `;
+          const img = chooseImageFor(name);
+          const card = document.createElement('div');
+          card.className = 'member-card';
+          card.innerHTML = `\n            <div class="member-photo">\n              <img src="${img}" alt="Foto de ${name}">\n            </div>\n            <p class="member-name">${name}</p>\n          `;
           membersCont.appendChild(card);
         });
 
-        // react to language changes from other tabs
         window.addEventListener('storage', async(ev)=>{
           if(ev.key === 'mateoritos_lang'){
             await i18n.load();
             const d2 = i18n.t('page3');
-            document.querySelector('.page-title').textContent = d2.title;
+            document.getElementById('page3-title').textContent = d2.title;
             document.getElementById('page3-team-name').textContent = d2.team_name;
             document.getElementById('page3-team-desc').textContent = d2.team_description;
-            document.querySelector('.footer-text').textContent = d2.footer;
+            document.getElementById('page3-footer').textContent = d2.footer;
             membersCont.innerHTML = '';
             (d2.members||[]).forEach(name => {
-              const imgSrc = chooseImageFor(name);
-              const card = document.createElement('article');
-              card.className = 'team-member';
-              card.innerHTML = `\n                <div class="member-avatar"><img src="${imgSrc}" alt="Foto de ${name}" class="avatar-image" /></div>\n                <h3 class="member-name">${name}</h3>\n              `;
+              const img = chooseImageFor(name);
+              const card = document.createElement('div');
+              card.className = 'member-card';
+              card.innerHTML = `\n                <div class="member-photo">\n                  <img src="${img}" alt="Foto de ${name}">\n                </div>\n                <p class="member-name">${name}</p>\n              `;
               membersCont.appendChild(card);
             });
           }
