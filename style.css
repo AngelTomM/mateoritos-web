@@ -241,3 +241,12 @@
   height: 100%;
 }
 
+/* Styles from new/style_new.css to ensure canvas fills and body has no margins */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
