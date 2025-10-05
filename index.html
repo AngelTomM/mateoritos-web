@@ -15,7 +15,13 @@
     <main class="marco-principal">
       <!-- Imagen de fondo eliminada, ahora se usa en el CSS -->
       <header>
-        <h1 class="SIMULACION-DE">SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES</h1>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <h1 class="SIMULACION-DE">SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES</h1>
+          <!-- Language toggle button -->
+          <div>
+            <button id="lang-toggle" style="padding:8px 12px;border-radius:8px;border:none;background:#fff;color:#0b3d91;cursor:pointer;">EN</button>
+          </div>
+        </div>
       </header>
       <section class="content-section">
         <p class="explora-como-peque">
@@ -53,6 +59,55 @@
           </li>
         </ul>
       </nav>
+      <script>
+        // Simple language toggle for index page. Persists in localStorage under 'mateoritos_lang'
+        (function(){
+          const texts = {
+            es: {
+              title: 'SIMULACION DE TRAYECTORIAS: <br />COMPORTAMIENTO ORBITAL DE ASTEROIDES',
+              explore: 'Explora como pequeñas variaciones en los parámetros orbitales <br />pueden evitar un posible impacto con el planeta tierra',
+              visualizar: 'Visualizar Simulación',
+              asteroides: 'Asteroides',
+              simulacion: 'Simulación',
+              sobre: 'Sobre Nosotros'
+            },
+            en: {
+              title: 'TRAJECTORY SIMULATION: <br />ORBITAL BEHAVIOR OF ASTEROIDS',
+              explore: 'Explore how small variations in orbital parameters <br />can avoid a possible impact with planet Earth',
+              visualizar: 'View Simulation',
+              asteroides: 'Asteroids',
+              simulacion: 'Simulation',
+              sobre: 'About Us'
+            }
+          };
+
+          function applyLang(lang){
+            const t = texts[lang] || texts.es;
+            document.querySelector('.SIMULACION-DE').innerHTML = t.title;
+            const exp = document.querySelector('.explora-como-peque'); if (exp) exp.innerHTML = t.explore;
+            const btnVis = document.querySelector('.texto-boton'); if (btnVis) btnVis.textContent = t.visualizar;
+            const navBtns = document.querySelectorAll('.navigation .texto-boton');
+            if (navBtns && navBtns.length >= 3) {
+              navBtns[0].textContent = t.asteroides;
+              navBtns[1].textContent = t.simulacion;
+              navBtns[2].textContent = t.sobre;
+            }
+            const toggle = document.getElementById('lang-toggle');
+            if (toggle) toggle.textContent = (lang === 'es') ? 'EN' : 'ES';
+            localStorage.setItem('mateoritos_lang', lang);
+          }
+
+          const initial = localStorage.getItem('mateoritos_lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'es');
+          applyLang(initial);
+
+          const btn = document.getElementById('lang-toggle');
+          if (btn) btn.addEventListener('click', () => {
+            const current = localStorage.getItem('mateoritos_lang') || 'es';
+            const next = current === 'es' ? 'en' : 'es';
+            applyLang(next);
+          });
+        })();
+      </script>
       <footer class="footer">
         <div class="footer-logos">
           <img class="NASA" src="NASA.png" alt="Logo de NASA" />
